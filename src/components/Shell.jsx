@@ -26,7 +26,7 @@ export default function Shell() {
       }}>
         {/* Logo / Title */}
         <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
-          <img src="/prism-logo.png" alt="PRISM logo" style={{ height: 28 }} />
+          <img src="/prismlogo.png" alt="PRISM logo" style={{ height: 28 }} />
           <span style={{
             fontSize: 9, fontWeight: 600, color: C.steel,
             letterSpacing: 2, textTransform: "uppercase",
