@@ -234,6 +234,44 @@ const GOP_AXES = [
   { key:"autonomy", pos:"Autonomy", neg:"Public Health" },
   { key:"markets",  pos:"Markets",  neg:"Econ. Populism" },
 ];
+// ─── VECTOR AXIS DEFINITIONS (hover tooltips) ───
+const VECTOR_DEFS = {
+  // GOP axes
+  trust: {
+    title: "TRUST: Higher Trust ↔ Higher Distrust",
+    text: "Measures baseline institutional confidence in the healthcare establishment — federal agencies, medical associations, and credentialed expertise. Higher Trust segments accept guidance from public health authorities as generally reliable, while Higher Distrust segments perceive these institutions as captured by political or financial interests and filter recommendations accordingly."
+  },
+  science: {
+    title: "SCIENCE: Trust Science ↔ Natural/Purity Focused",
+    text: "Captures whether a segment embraces evidence-based biomedical interventions or gravitates toward natural remedies, holistic wellness, and bodily purity. Trust Science segments accept clinical trial evidence and pharmaceutical solutions at face value, while Natural/Purity segments view synthetic interventions with skepticism and prioritize organic, minimally processed alternatives."
+  },
+  autonomy: {
+    title: "FREEDOM: Public Health ↔ Body Autonomy",
+    text: "Reveals the tension between collective health mandates and individual sovereignty over medical decisions. Public Health segments accept vaccination requirements, masking protocols, and regulatory oversight as legitimate community protections, while Body Autonomy segments view any compulsory health measure as an unacceptable infringement on personal liberty."
+  },
+  markets: {
+    title: "MARKETS: Free Markets ↔ Economic Populism",
+    text: "Distinguishes between segments that trust market competition to optimize healthcare pricing and access versus those demanding government intervention to control costs. Free Market segments favor deregulation, consumer choice, and innovation incentives, while Economic Populist segments want aggressive price controls, trade policy enforcement, and protecting access to care."
+  },
+  // DEM axes
+  reform: {
+    title: "REFORM: System Overhaul ↔ Incremental Change",
+    text: "Measures how aggressively a segment wants to restructure the U.S. healthcare system, from single-payer transformation to working within existing frameworks. Segments scoring toward System Overhaul see the current architecture as fundamentally broken, while those toward Incremental Change believe targeted policy fixes can deliver meaningful progress without systemic disruption."
+  },
+  equity: {
+    title: "JUSTICE: Equity Focus ↔ Individual Responsibility",
+    text: "Measures whether a segment frames healthcare outcomes primarily as a product of structural inequities or personal choices and accountability. Equity-focused segments prioritize closing disparate access gaps across race, income, and geography, while Individual Responsibility segments emphasize personal health behaviors and merit-based resource allocation."
+  },
+  domestic: {
+    title: "LEADERSHIP: Global Health Focus ↔ American Leadership",
+    text: "Reveals whether a segment sees U.S. healthcare policy through an internationalist lens or a nationalist one. Global Health segments see the top threats to health coming from global pandemics and climate change, and support multilateral cooperation. American healthcare leadership looks to the U.S. to set the global standard through domestic innovation and competitive excellence."
+  },
+  private: {
+    title: "INDUSTRY: Distrust Private Sector ↔ Welcomes Private Partnership",
+    text: "Gauges posture toward pharmaceutical companies, insurers, and other corporate actors in the healthcare ecosystem. Segments on the Distrust end view industry profit motives as incompatible with patient welfare, while those Welcoming Partnership see private-sector innovation and capital as essential engines of progress."
+  },
+};
+
 const DEM_AXES = [
   { key:"reform",   pos:"Reform",   neg:"Status Quo" },
   { key:"equity",   pos:"Justice",  neg:"Individualism" },
@@ -474,6 +512,7 @@ function ProfileVectorRadar({ seg }) {
   const isGOP = seg.party === "GOP";
   const vectors = isGOP ? GOP_VECTORS[seg.code] : DEM_VECTORS[seg.code];
   const axes = isGOP ? GOP_AXES : DEM_AXES;
+  const [hovAxis, setHovAxis] = useState(null);
   if (!vectors) return null;
 
   const size = 260;
@@ -498,7 +537,7 @@ function ProfileVectorRadar({ seg }) {
   const dots = values.map((v, i) => ({ ...getPoint(angles[i], valToR(v)), val: v }));
 
   return (
-    <div style={{ display:"flex", flexDirection:"column", alignItems:"center" }}>
+    <div style={{ display:"flex", flexDirection:"column", alignItems:"center", position:"relative" }}>
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ overflow:"visible" }}>
         {gridVals.map((gv, gi) => {
           const r = valToR(gv);
@@ -532,10 +571,15 @@ function ProfileVectorRadar({ seg }) {
           const p = getPoint(angles[i], labelR);
           const anchor = i===1?"start":i===3?"end":"middle";
           const dy = i===0?-5:i===2?7:0;
+          const isHov = hovAxis === ax.key;
           return (
-            <g key={`label-${i}`}>
+            <g key={`label-${i}`}
+              onMouseEnter={() => setHovAxis(ax.key)}
+              onMouseLeave={() => setHovAxis(null)}
+              style={{ cursor:"pointer" }}>
               <text x={p.x} y={p.y+dy} textAnchor={anchor} dominantBaseline="central"
-                fontSize={9} fontWeight={700} fill="#e2e8f0" fontFamily="'Nunito',sans-serif" letterSpacing={0.3}>
+                fontSize={9} fontWeight={700} fill={isHov?"#f8fafc":"#e2e8f0"} fontFamily="'Nunito',sans-serif" letterSpacing={0.3}
+                textDecoration={isHov?"underline":"none"}>
                 {ax.pos.toUpperCase()}
               </text>
               <text x={p.x} y={p.y+dy+11} textAnchor={anchor} dominantBaseline="central"
@@ -546,6 +590,21 @@ function ProfileVectorRadar({ seg }) {
           );
         })}
       </svg>
+      {/* Tooltip */}
+      {hovAxis && VECTOR_DEFS[hovAxis] && (
+        <div style={{
+          position:"absolute", bottom:-8, left:"50%", transform:"translate(-50%, 100%)",
+          width:280, background:"#1e293b", border:"1px solid #334155", borderRadius:8,
+          padding:"10px 12px", zIndex:50, boxShadow:"0 8px 24px rgba(0,0,0,0.5)",
+        }}>
+          <div style={{ fontSize:10, fontWeight:700, color:"#a78bfa", fontFamily:"'Nunito',sans-serif", marginBottom:4, lineHeight:1.3 }}>
+            {VECTOR_DEFS[hovAxis].title}
+          </div>
+          <div style={{ fontSize:9, color:"#cbd5e1", fontFamily:"'Nunito',sans-serif", lineHeight:1.5 }}>
+            {VECTOR_DEFS[hovAxis].text}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -555,21 +614,29 @@ function VectorBars({ seg }) {
   const isGOP = seg.party === "GOP";
   const vectors = isGOP ? GOP_VECTORS[seg.code] : DEM_VECTORS[seg.code];
   const axes = isGOP ? GOP_AXES : DEM_AXES;
+  const [hovAxis, setHovAxis] = useState(null);
   if (!vectors) return null;
   const barColor = isGOP ? "#f87171" : "#60a5fa";
   const barBg = "#111827";
 
   return (
-    <div style={{ display:"flex", flexDirection:"column", gap:6 }}>
+    <div style={{ display:"flex", flexDirection:"column", gap:6, position:"relative" }}>
       {axes.map((ax, i) => {
         const val = vectors[ax.key];
         const isPos = val >= 0;
         const absPct = Math.min(Math.abs(val) / 0.85 * 100, 100);
+        const isHov = hovAxis === ax.key;
         return (
           <div key={ax.key}>
             <div style={{ display:"flex", justifyContent:"space-between", marginBottom:2 }}>
-              <span style={{ fontSize:8, color:!isPos?barColor:"#475569", fontWeight:!isPos?700:400, fontFamily:"'Nunito',sans-serif" }}>← {ax.neg}</span>
-              <span style={{ fontSize:8, color:isPos?barColor:"#475569", fontWeight:isPos?700:400, fontFamily:"'Nunito',sans-serif" }}>{ax.pos} →</span>
+              <span
+                onMouseEnter={() => setHovAxis(ax.key)}
+                onMouseLeave={() => setHovAxis(null)}
+                style={{ fontSize:8, color:!isPos?barColor:"#475569", fontWeight:!isPos?700:400, fontFamily:"'Nunito',sans-serif", cursor:"pointer", textDecoration:isHov?"underline":"none" }}>← {ax.neg}</span>
+              <span
+                onMouseEnter={() => setHovAxis(ax.key)}
+                onMouseLeave={() => setHovAxis(null)}
+                style={{ fontSize:8, color:isPos?barColor:"#475569", fontWeight:isPos?700:400, fontFamily:"'Nunito',sans-serif", cursor:"pointer", textDecoration:isHov?"underline":"none" }}>{ax.pos} →</span>
             </div>
             <div style={{ display:"flex", alignItems:"center", gap:0 }}>
               <div style={{ flex:1, height:22, background:barBg, borderRadius:"4px 0 0 4px", position:"relative", overflow:"hidden" }}>
@@ -585,6 +652,22 @@ function VectorBars({ seg }) {
           </div>
         );
       })}
+      {/* Tooltip */}
+      {hovAxis && VECTOR_DEFS[hovAxis] && (
+        <div style={{
+          position:"absolute", top:-8, left:"50%", transform:"translate(-50%, -100%)",
+          width:280, background:"#1e293b", border:"1px solid #334155", borderRadius:8,
+          padding:"10px 12px", zIndex:50, boxShadow:"0 8px 24px rgba(0,0,0,0.5)",
+          pointerEvents:"none",
+        }}>
+          <div style={{ fontSize:10, fontWeight:700, color:"#a78bfa", fontFamily:"'Nunito',sans-serif", marginBottom:4, lineHeight:1.3 }}>
+            {VECTOR_DEFS[hovAxis].title}
+          </div>
+          <div style={{ fontSize:9, color:"#cbd5e1", fontFamily:"'Nunito',sans-serif", lineHeight:1.5 }}>
+            {VECTOR_DEFS[hovAxis].text}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -1885,9 +1968,9 @@ export default function SegmentProfile() {
       <div style={{ maxWidth:1400, margin:"0 auto" }}>
         {/* Header */}
         <div style={{ marginBottom:14 }}>
-          <div style={{ fontFamily:"'Nunito',sans-serif", fontSize:9, letterSpacing:3, color:"#475569", marginBottom:3 }}>RESERVOIR HEALTH PRISM</div>
-          <h1 style={{ fontFamily:"'Roboto',sans-serif", fontSize:22, fontWeight:800, color:"#f1f5f9", margin:0 }}>PRISM AUDIENCE SEGMENTATION</h1>
-          <div style={{ fontFamily:"'Roboto',sans-serif", fontSize:13, fontWeight:600, color:"#a78bfa", marginTop:2 }}>PERSONA PROFILES</div>
+          <div style={{ fontFamily:"'Nunito',sans-serif", fontSize:9, letterSpacing:3, color:"#475569", marginBottom:3 }}>RESERVOIR HEALTH PRISM PULSE</div>
+          <h1 style={{ fontFamily:"'Roboto',sans-serif", fontSize:22, fontWeight:800, color:"#f1f5f9", margin:0 }}>SEGMENT PROFILE</h1>
+          <div style={{ fontFamily:"'Roboto',sans-serif", fontSize:13, fontWeight:600, color:"#a78bfa", marginTop:2 }}>16-SEGMENT BEHAVIORAL SEGMENTATION</div>
         </div>
 
         {/* Segment selector */}
@@ -2007,7 +2090,7 @@ export default function SegmentProfile() {
         {/* Footer */}
         <div style={{ marginTop:16, padding:"8px 0", borderTop:"1px solid #1e293b", fontSize:8, color:"#475569", fontFamily:"'Nunito',sans-serif", display:"flex", justifyContent:"space-between" }}>
           <span>PRISM V3.1 · RESERVOIR COMMUNICATIONS GROUP · CONFIDENTIAL & PROPRIETARY</span>
-          <span>PRISM AUDIENCE INTELLIGENCE PLATFORM · PERSONA PROFILES</span>
+          <span>16-SEGMENT BEHAVIORAL SEGMENTATION · PRISM PROFILE</span>
         </div>
       </div>
     </div>
