@@ -1886,8 +1886,8 @@ export default function SegmentProfile() {
         {/* Header */}
         <div style={{ marginBottom:14 }}>
           <div style={{ fontFamily:"'Nunito',sans-serif", fontSize:9, letterSpacing:3, color:"#475569", marginBottom:3 }}>RESERVOIR HEALTH PRISM PULSE</div>
-          <h1 style={{ fontFamily:"'Roboto',sans-serif", fontSize:22, fontWeight:800, color:"#f1f5f9", margin:0 }}>SEGMENT PROFILE</h1>
-          <div style={{ fontFamily:"'Roboto',sans-serif", fontSize:13, fontWeight:600, color:"#a78bfa", marginTop:2 }}>16-SEGMENT BEHAVIORAL SEGMENTATION</div>
+          <h1 style={{ fontFamily:"'Roboto',sans-serif", fontSize:22, fontWeight:800, color:"#f1f5f9", margin:0 }}>PRISM AUDIENCE SEGMENTATION</h1>
+          <div style={{ fontFamily:"'Roboto',sans-serif", fontSize:13, fontWeight:600, color:"#a78bfa", marginTop:2 }}>PERSONA PROFILES</div>
         </div>
 
         {/* Segment selector */}
