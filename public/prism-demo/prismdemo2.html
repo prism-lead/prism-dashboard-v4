@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Bubble Map</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #ffffff;
+    }
+
+    .stage-wrapper {
+      width: 1400px;
+      margin: 40px auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .stage {
+      position: relative;
+      width: 5325px;
+      height: 1959px;
+      transform: scale(0.26);
+      transform-origin: top left;
+    }
+
+    .bubble {
+      position: absolute;
+      cursor: pointer;
+
+      transition:
+        left 1.6s cubic-bezier(.22,.61,.36,1),
+        top  1.6s cubic-bezier(.22,.61,.36,1),
+        transform .6s ease,
+        filter .4s ease,
+        opacity .4s ease;
+
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .bubble:nth-child(odd)  { animation-duration: 9.5s; }
+    .bubble:nth-child(even) { animation-duration: 7.5s; }
+
+    .bubble.active {
+      transform: scale(1.05);
+      z-index: 100;
+    }
+
+    .dim {
+      opacity: 0.25;
+      filter: blur(1px);
+    }
+
+    @keyframes float {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-6px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* persona card */
+    #persona-card {
+      position: absolute;
+      display: none;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: opacity .25s ease, transform .25s ease;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    #persona-card.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="stage-wrapper">
+
+  <div class="stage">
+    <img class="bubble" src="UCP.png" data-left="115" data-top="196" data-card="UCPCard.png" style="width:900px; z-index:4;">
+    <img class="bubble" src="FJP.png" data-left="650" data-top="639" data-card="FJPCard.png" style="width:897px; z-index:3;">
+    <img class="bubble" src="GHI.png" data-left="1320" data-top="1028" data-card="GHICard.png" style="width:897px; z-index:2;">
+    <img class="bubble" src="VS.png" data-left="4470" data-top="772" data-card="VSCard.png" style="width:897px; z-index:2;">
+    <img class="bubble" src="TSP.png" data-left="2727" data-top="497" data-card="TSPCard.png" style="width:560px; z-index:3;">
+    <img class="bubble" src="HCP.png" data-left="1389" data-top="454" data-card="HCPCard.png" style="width:775px; z-index:1;">
+    <img class="bubble" src="HAD.png" data-left="1965" data-top="290" data-card="HADCard.png" style="width:850px; z-index:4;">
+    <img class="bubble" src="HCI.png" data-left="1980" data-top="794" data-card="HCICard.png" style="width:800px; z-index:3;">
+    <img class="bubble" src="PFF.png" data-left="3955" data-top="29" data-card="PFFCard.png" style="width:770px; z-index:2;">
+    <img class="bubble" src="PP.png" data-left="3484" data-top="154" data-card="PPCard.png" style="width:660px; z-index:2;">
+    <img class="bubble" src="HF.png" data-left="3182" data-top="474" data-card="HFCard.png" style="width:660px; z-index:2;">
+    <img class="bubble" src="CEC.png" data-left="2857" data-top="780" data-card="CECCard.png" style="width:800px; z-index:1;">
+    <img class="bubble" src="TC.png" data-left="3388" data-top="1146" data-card="TCCard.png" style="width:800px; z-index:4;">
+    <img class="bubble" src="HHN.png" data-left="4379" data-top="400" data-card="HHNCard.png" style="width:670px; z-index:3;">
+    <img class="bubble" src="MFL.png" data-left="4094" data-top="1172" data-card="MFLCard.png" style="width:830px; z-index:3;">
+    <img class="bubble" src="WE.png" data-left="3568" data-top="400" data-card="WECard.png" style="width:1100px; z-index:1;">
+  </div>
+
+  <div id="persona-card">
+    <img id="persona-img" src="" style="width:300px;">
+  </div>
+
+</div>
+
+<script>
+window.addEventListener('load', () => {
+  document.querySelectorAll('.bubble').forEach(b => {
+    b.style.left = b.dataset.left + 'px';
+    b.style.top  = b.dataset.top  + 'px';
+  });
+});
+</script>
+
+<script>
+const bubbles = document.querySelectorAll('.bubble');
+const card = document.getElementById('persona-card');
+const cardImg = document.getElementById('persona-img');
+
+bubbles.forEach(bubble => {
+  bubble.addEventListener('click', e => {
+    e.stopPropagation();
+
+    // dim others
+    bubbles.forEach(b => {
+      b.classList.remove('active');
+      b !== bubble ? b.classList.add('dim') : b.classList.remove('dim');
+    });
+    bubble.classList.add('active');
+
+    // show card
+    cardImg.src = bubble.dataset.card;
+    card.style.display = 'block';
+    card.classList.remove('show');
+
+    // measure positions
+    const r = bubble.getBoundingClientRect();
+    const cardRect = card.getBoundingClientRect();
+    const cardWidth = cardRect.width;
+    const GAP = 8;
+
+    const spaceRight = window.innerWidth - r.right;
+    const spaceLeft  = r.left;
+
+    // choose side by available space
+    if (spaceRight >= cardWidth + GAP) {
+      card.style.left = (r.right + GAP + window.scrollX) + 'px';
+    } else {
+      card.style.left = (r.left - cardWidth - GAP + window.scrollX) + 'px';
+    }
+
+    card.style.top = (r.top + window.scrollY) + 'px';
+
+    requestAnimationFrame(() => card.classList.add('show'));
+  });
+});
+
+// click outside to reset
+document.addEventListener('click', () => {
+  bubbles.forEach(b => b.classList.remove('dim', 'active'));
+  card.classList.remove('show');
+  setTimeout(() => card.style.display = 'none', 250);
+});
+</script>
+
+</body>
+</html>
