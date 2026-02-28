@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
+import IdeologyHeatmap from "./IdeologyHeatmap";
 
 // ─── SEGMENTS ──────────────────────────────────────────────────────────────
 const SEGMENTS = [
@@ -1997,7 +1998,7 @@ export default function SegmentProfile() {
         {/* Tab Content */}
         {profileTab === "demo" && <DemographicsPanel seg={seg} />}
         {profileTab === "beliefs" && <BeliefsPanel segIdx={segIdx} />}
-        {profileTab === "ideology" && <IdeologyPanel seg={seg} />}
+        {profileTab === "ideology" && <IdeologyHeatmap />}
         {profileTab === "trust" && <TrustPanel segIdx={segIdx} />}
         {profileTab === "exp" && <ExpPanel segIdx={segIdx} />}
         {profileTab === "wellness" && <WellnessPanel segIdx={segIdx} />}
