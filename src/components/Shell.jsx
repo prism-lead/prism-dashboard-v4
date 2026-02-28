@@ -25,15 +25,9 @@ export default function Shell() {
         position: "sticky", top: 0, zIndex: 100,
       }}>
         {/* Logo / Title */}
-        <div style={{ display: "flex", alignItems: "baseline", gap: 10, flexShrink: 0 }}>
-          <span style={{
-            fontSize: 15, fontWeight: 800, color: C.white,
-            letterSpacing: 1.5,
-          }}>PRISM</span>
-          <span style={{
-            fontSize: 9, fontWeight: 600, color: C.steel,
-            letterSpacing: 2, textTransform: "uppercase",
-          }}>16-Segment Platform</span>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
+          <img src="public/prism logo.png" alt="PRISM logo" style={{ height: 28 }} />
+          <span style={{ ... }}>AUDIENCE INTELLIGENCE PLATFORM</span>
         </div>
 
         {/* Nav Links */}
