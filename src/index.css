@@ -1,0 +1,12 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  background: #080c16;
+  color: #cbd5e1;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+button { font-family: inherit; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #0f1520; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }

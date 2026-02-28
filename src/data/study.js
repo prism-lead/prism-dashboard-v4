@@ -1,0 +1,123 @@
+// ═══════════════════════════════════════════════════════════════
+// STUDY-SPECIFIC — AmericanLife Pharmaceutical Investment Study
+// This file CHANGES across client engagements.
+// ═══════════════════════════════════════════════════════════════
+
+export const STUDY_META = {
+  name: "AmericanLife",
+  client: "PhRMA / American Life Sciences Coalition",
+  topic: "U.S. Pharmaceutical Investment & Domestic Manufacturing",
+  fieldDate: "2025",
+  nMessages: 11,
+  methodology: "11-item MaxDiff · 16 PRISM segments",
+};
+
+// ─── MESSAGES ───
+export const MESSAGES = [
+  { id:1, code:"AL_1", shortName:"American Can Lead", theme:"Leadership",
+    control:"Investing in U.S. medicine manufacturing is part of America doing big things again, leading the world in the industries that matter most.",
+    variants:{1:"It's time for America to do big things again—leading the world in medicine manufacturing, an industry that matters to every family paying healthcare bills.",2:"America doing big things again includes building medicine manufacturing here—where we can set our own standards and aren't dependent on foreign countries with different values.",3:"America doing big things again means leading in medicine manufacturing—an industry that matters for our families, our security, and our national strength.",5:"America used to do big things. Leading the world in medicine manufacturing is the kind of industry that matters—one that can deliver for working families, not just Wall Street.",6:"America doing big things again means taking the lead in medicine manufacturing—an industry that matters for families who want real control over their health choices.",7:"America must do big things again. Leading the world in medicine manufacturing is exactly the kind of high-stakes industry where American ambition should dominate.",9:"America doing big things again means building medicine manufacturing here—where patients have more choices and aren't dependent on foreign countries for their health options.",10:"America should do big things again—leading the world in medicine manufacturing, where scientific breakthroughs can reach patients in every community.",11:"America doing big things again must include tackling the biggest challenges in health care which can't happen if we lose our leadership in developing and making medicines here at home.",12:"America doing big things again must include leading in medicine manufacturing—an industry that matters for health, jobs, and strong communities.",13:"America doing big things again means leading in medicine manufacturing—an industry that matters to working families who built this country and deserve these jobs.",14:"America can and must do big things again—leading the world in medicine manufacturing can help us remain a global leader.",15:"America can do big things again by leading in medicine manufacturing—an industry that matters for stable jobs and the treatments Americans depend on.",16:"Investing in U.S. medicine manufacturing is part of America doing big things again and working to solve our most urgent global challenges."}},
+  { id:2, code:"AL_2", shortName:"National Security", theme:"Security",
+    control:"America must invent and make critical medicines at home; depending too much on foreign countries leaves us vulnerable in crises, conflicts, or trade disputes.",
+    variants:{1:"When we depend on foreign countries for critical medicines, American patients are vulnerable in every crisis. We need domestic supply chains we can count on.",2:"Depending on foreign countries for critical medicines leaves American families vulnerable when crises hit. We need domestic production we can count on.",3:"Depending on foreign nations for critical medicines is a security risk. American families shouldn't be vulnerable to foreign supply disruptions during crises or conflicts.",5:"When crises hit, foreign medicine dependence means shortages and price spikes that crush working families. We can't be this vulnerable to overseas suppliers.",9:"Depending on foreign countries for critical medicines puts patients at risk. When supply chains fail, individuals lose the ability to make their own treatment decisions.",10:"Foreign dependence for critical medicines leaves us exposed during crises. Domestic manufacturing ensures reliable supply when communities need treatments most.",11:"Foreign dependence on critical medicines creates vulnerability that hits hardest when crises come. Domestic manufacturing protects all American patients—especially those with the least margin for error.",12:"Foreign dependence on medicines hits hardest in crises—and vulnerable communities suffer most from shortages. Domestic manufacturing protects all American families.",13:"Working families can't afford medicine shortages when crises hit. Foreign dependence is a vulnerability that puts the people who built this country at risk.",14:"America must invent and make critical medicines at home; depending too much on foreign countries leaves us vulnerable in crises, conflicts, or trade disputes.",16:"Foreign dependence on medicines creates cascading vulnerabilities for global health systems and patients here at home."}},
+  { id:3, code:"AL_3", shortName:"China Competition", theme:"Security",
+    control:"China is rapidly expanding its ability to develop and manufacture new medicines, and the U.S. risks falling behind a strategic competitor in a vital industry.",
+    variants:{1:"China is racing to dominate medicine manufacturing while America falls behind. We can't let a strategic competitor control an industry that affects every patient.",3:"China is rapidly expanding its medicine industry while America risks falling behind. We cannot cede this vital sector to a communist regime that threatens our values.",5:"China is building medicine factories while American plants close. Corporate offshoring helped China gain ground—now working families pay the price.",9:"China is rapidly expanding medicine manufacturing while America falls behind. Dependence on an authoritarian regime is the opposite of medical freedom for American patients.",10:"China is investing heavily in medicine manufacturing and the U.S. is at risk of falling behind. We need to match their commitment to stay competitive in this vital science.",13:"China expands medicine manufacturing while American workers lose ground. A strategic competitor is winning because corporate decisions shipped our jobs overseas.",14:"China is building medicine manufacturing capacity while America falls behind. We can't build the future of healthcare here if a strategic competitor controls critical supply chains."}},
+  { id:4, code:"AL_4", shortName:"US Global Leadership", theme:"Leadership",
+    control:"America leads the world in developing and manufacturing new medicines, but leadership can shift quickly. Europe once led this industry and lost ground, and China is now racing to take the lead. The U.S. must treat this as a national priority to stay ahead.",
+    variants:{1:"America leads in medicine today, but Europe once led too—and lost it. Staying ahead requires treating this industry as a national priority, not assuming leadership is permanent.",3:"America leads in medicine manufacturing, but leadership isn't guaranteed. Europe once dominated this industry and lost ground. We must make staying ahead a national priority.",5:"America leads in medicine now, but Europe lost its lead—jobs went elsewhere. If we don't make this a national priority, working families will watch another industry disappear.",9:"America leads in medicine, but Europe once led and lost ground. Maintaining leadership here means more options for patients—not fewer choices dictated by foreign suppliers.",10:"America leads in medicine, but Europe once led and lost ground. China is racing to catch up. Sustained investment in science and manufacturing is a national priority.",14:"America leads in medicine, but leadership shifts—Europe lost ground, China is racing. National priority means sustained capacity building, not complacency."}},
+  { id:5, code:"AL_5", shortName:"Economic Growth", theme:"Economy",
+    control:"Inventing and making new medicines here adds hundreds of billions to the U.S. economy—not just through corporate jobs, but through construction, housing, and the businesses that support it.",
+    variants:{2:"Medicine manufacturing adds hundreds of billions to the economy—construction, housing, local businesses. Real economic benefits rooted in communities.",5:"Medicine manufacturing adds hundreds of billions to the economy—construction jobs, housing, local businesses. That's real money for working families, not just corporate balance sheets.",7:"Medicine manufacturing adds hundreds of billions to GDP—construction, housing, supporting businesses. This is the economic engine of a biotech-driven future.",13:"Medicine manufacturing adds hundreds of billions to the economy—construction, housing, local businesses. Real economic gains for working communities, not corporate shell games."}},
+  { id:6, code:"AL_6", shortName:"Local Opportunity", theme:"Economy",
+    control:"Making medicines in America creates good-paying jobs, supports small businesses, and helps transform local communities into vibrant places to live and work—the next generation of American opportunity.",
+    variants:{2:"Making medicines in America creates good-paying jobs, supports small businesses, and transforms local communities—the kind of rooted prosperity that strengthens families.",5:"Medicine manufacturing means good-paying jobs, thriving small businesses, and transformed communities—local opportunity for working families.",10:"Medicine manufacturing creates good-paying jobs and supports small businesses, transforming communities—especially rural areas that need paths to the innovation economy.",12:"Medicine manufacturing creates good-paying jobs, supports small businesses, and transforms communities—opportunity that can reach neighborhoods historically left behind.",13:"Medicine manufacturing means good-paying jobs, small businesses, and transformed communities—the kind of local opportunity working families fought for and deserve."}},
+  { id:7, code:"AL_7", shortName:"Pillar of US Mfg", theme:"Economy",
+    control:"The U.S. biopharmaceutical industry is as important to American manufacturing as autos and aerospace—a high-tech sector that produces just as many high-paying, high-skill jobs across the country.",
+    variants:{5:"Medicine manufacturing is as important as autos and aerospace—creating just as many high-paying, high-skill jobs that can help rebuild the American middle class.",7:"Biopharmaceutical manufacturing is as strategic as autos and aerospace—high-tech jobs in the sector that will define economic competition for the next century.",10:"Biopharmaceutical manufacturing rivals autos and aerospace—high-paying, high-skill jobs that bring scientific innovation to communities across the country.",13:"Medicine manufacturing is as important as autos and aerospace—high-paying, high-skill jobs that working people built and deserve to keep in America."}},
+  { id:8, code:"AL_8", shortName:"Universities & Innovation", theme:"Innovation",
+    control:"Research in American universities—in every state—drives new discoveries, creates thousands of biotech start-ups, and trains the next generation of scientists.",
+    variants:{2:"Research at American universities in every state drives new discoveries, creates biotech startups, and trains scientists—homegrown innovation serving American communities.",7:"Universities in every state drive discoveries, launch thousands of startups, and train scientists—the innovation engine powering America's biotech dominance.",10:"Research at universities in every state drives discoveries, creates thousands of startups, and trains scientists—the pipeline that brings innovation to communities nationwide.",11:"Research at American universities in every state drives discoveries, creates startups, and trains scientists—public institutions generating innovation that benefits the whole country."}},
+  { id:9, code:"AL_9", shortName:"STEM & High-Tech Mfg", theme:"Innovation",
+    control:"Medicines are a form of advanced, high-tech manufacturing that America must prioritize if it wants to remain a competitive, innovation-driven economy.",
+    variants:{1:"Medicines are advanced, high-tech manufacturing America must prioritize—a competitive industry that works best when innovation and consumer choice drive the market.",7:"Medicines are advanced, high-tech manufacturing America must absolutely prioritize—the innovation frontier that will define economic competition for the rest of the century.",9:"Medicines are advanced, high-tech manufacturing America must prioritize. A strong domestic industry gives patients more options—not dependence on distant suppliers.",10:"Medicines are advanced, high-tech manufacturing America must prioritize—the kind of innovation-driven industry that keeps us competitive and brings science to patients."}},
+  { id:10, code:"AL_10", shortName:"Patients First", theme:"Patient",
+    control:"When medicines are made in America, U.S. patients are more likely to get early and reliable access to the newest treatments and cures.",
+    variants:{1:"When medicines are made in America, U.S. patients get early, reliable access to the newest treatments—putting consumers first, not foreign supply chains.",5:"When medicines are made here, American patients get early, reliable access—working families first, not wealthy foreigners or corporate-connected elites.",9:"When medicines are made in America, patients get earlier, more reliable access to new treatments—real choices available when you need them, not controlled by foreign supply chains.",10:"Domestic medicine manufacturing means U.S. patients get early, reliable access to the newest treatments—scientific breakthroughs reaching patients when they need them.",12:"American-made medicines should mean early, reliable access for all U.S. patients—especially underserved communities that have waited too long for equal access."}},
+  { id:11, code:"AL_11", shortName:"Benefit for Americans", theme:"Patient",
+    control:"Medicines will always be a major global industry, and policymakers should ensure that the jobs, investment, and economic benefits stay in the United States.",
+    variants:{1:"Medicines are a global industry—policymakers must ensure jobs, investment, and benefits stay in America, where competitive markets can serve consumers.",5:"Medicine is a huge global industry—policymakers must fight to keep jobs, investment, and benefits here for working families, not let them flow to foreign shareholders.",9:"Medicines are a major global industry. Keeping jobs and investment in America means a domestic industry that gives patients options—not dependence on countries that don't respect individual freedom.",13:"Medicine is a global industry. Policymakers must ensure jobs, investment, and benefits stay here—protecting what American workers built.",14:"Medicine is a major global industry. Policymakers must keep jobs, investment, and benefits in America—building the capacity for healthcare abundance."}},
+];
+
+// ─── SoP MATRICES (11 messages × 16 segments) ───
+export const CONTROL_SOP = [
+  [8.6,6.9,6.4,6.2,5.7,7.1,8.7,10.6,7.4,6.4,5.0,6.0,6.8,4.3,6.2,5.6],
+  [10.2,14.3,15.5,13.3,11.4,19.2,15.9,7.6,8.1,16.4,8.0,6.4,7.3,9.7,10.4,8.5],
+  [9.4,8.9,8.4,8.8,6.8,6.9,4.4,7.2,5.8,6.2,2.4,5.8,5.5,4.0,5.2,7.5],
+  [14.1,7.9,13.1,6.9,8.7,11.5,7.6,14.8,8.2,8.9,7.2,7.8,7.4,5.7,8.6,11.7],
+  [7.0,9.8,8.5,5.7,11.7,9.7,12.9,8.6,10.8,20.7,13.4,10.1,9.3,11.7,9.3,7.3],
+  [13.3,11.0,9.5,10.8,15.8,12.2,15.9,11.3,16.2,13.6,18.4,13.3,15.3,11.5,14.0,8.1],
+  [9.4,8.9,8.6,10.3,9.3,6.9,9.1,9.9,10.3,7.2,7.6,8.4,12.7,6.9,9.2,13.7],
+  [7.3,8.8,7.5,8.4,8.5,4.8,5.4,9.1,6.1,4.9,18.8,16.4,10.8,19.9,10.7,15.5],
+  [7.4,5.6,8.2,6.2,7.0,5.8,5.5,7.0,8.0,3.6,5.2,7.1,6.9,8.4,7.2,8.1],
+  [5.6,11.6,8.1,11.9,9.2,8.8,8.7,6.6,9.5,6.6,7.7,12.9,10.0,10.3,10.6,6.9],
+  [7.7,6.5,6.1,11.6,5.9,7.0,6.0,7.5,9.7,5.6,6.4,5.9,7.9,7.8,8.6,7.0],
+];
+export const VARIANT_SOP = [
+  [9.0,13.8,8.4,5.5,9.4,10.8,12.4,9.5,11.1,9.0,7.8,8.0,7.0,5.5,7.0,9.2],
+  [7.7,11.2,12.1,8.4,8.6,15.0,8.6,7.6,8.2,16.9,6.3,5.0,8.8,5.2,9.2,8.6],
+  [7.3,10.1,10.6,9.7,7.9,10.1,8.5,7.5,6.3,6.7,6.5,3.9,3.6,8.8,9.4,7.1],
+  [14.5,6.0,8.8,5.3,6.2,7.4,13.1,10.3,4.9,3.8,6.3,3.8,5.5,7.4,7.9,6.4],
+  [6.3,10.8,10.0,9.2,10.5,11.3,9.1,8.7,8.2,18.7,9.1,11.9,11.4,9.6,10.6,8.8],
+  [10.7,8.7,12.8,12.5,13.0,11.2,10.4,11.8,16.8,12.8,14.2,12.5,12.2,7.8,14.3,9.1],
+  [7.9,9.2,8.4,10.3,8.3,5.3,10.6,9.3,6.0,8.3,5.7,6.0,11.0,6.7,7.2,12.9],
+  [9.6,7.8,5.5,12.1,10.1,5.3,6.0,11.0,8.3,4.4,18.2,15.7,16.5,17.9,12.0,13.7],
+  [9.8,6.2,6.1,8.3,9.1,5.1,7.3,7.0,7.9,4.3,5.7,5.7,7.2,8.1,7.2,7.9],
+  [8.4,9.3,9.6,8.4,7.4,10.0,8.9,8.8,13.1,7.4,14.1,21.0,8.1,13.6,7.3,10.1],
+  [8.8,6.8,7.8,10.3,9.5,8.5,5.1,8.4,9.3,7.7,6.3,6.6,8.8,9.6,7.9,6.4],
+];
+
+// ─── SEGMENT-LEVEL STUDY METRICS ───
+// Keyed by segment code. These change per study.
+export const STUDY_METRICS = {
+  TSP: { tier:2, roi:0.90, highRoi:20, supporters:62, activation:23, influence:23, persuadability:[20,0,27,17,37], phrma:{p01:63.0,p02i:40,p02g:60,p03h:53,p03u:47,p04:80.0}, prePost:{rank:[43.0,40.0],att1:[67.0,63.0],att2:[55.0,53.0],fav:[49.0,60.0]} },
+  CEC: { tier:1, roi:1.07, highRoi:28, supporters:60, activation:12, influence:7, persuadability:[14,13,43,2,28], phrma:{p01:35.0,p02i:57,p02g:43,p03h:59,p03u:41,p04:90.0}, prePost:{rank:[32.0,55.0],att1:[77.0,69.0],att2:[57.0,62.0],fav:[28.0,58.0]} },
+  TC:  { tier:2, roi:1.13, highRoi:35, supporters:70, activation:26, influence:18, persuadability:[27,9,23,11,31], phrma:{p01:71.0,p02i:66,p02g:34,p03h:55,p03u:45,p04:89.0}, prePost:{rank:[37.0,52.0],att1:[74.0,71.0],att2:[68.0,70.0],fav:[58.0,77.0]} },
+  HF:  { tier:3, roi:0.88, highRoi:17, supporters:56, activation:19, influence:29, persuadability:[14,3,19,17,47], phrma:{p01:61.0,p02i:50,p02g:50,p03h:67,p03u:33,p04:81.0}, prePost:{rank:[28.0,25.0],att1:[58.0,58.0],att2:[50.0,53.0],fav:[56.0,56.0]} },
+  PP:  { tier:2, roi:1.02, highRoi:27, supporters:45, activation:7, influence:5, persuadability:[12,15,43,10,21], phrma:{p01:25.0,p02i:59,p02g:41,p03h:55,p03u:45,p04:86.0}, prePost:{rank:[36.0,53.0],att1:[55.0,62.0],att2:[48.0,55.0],fav:[21.0,51.0]} },
+  WE:  { tier:3, roi:1.08, highRoi:24, supporters:51, activation:13, influence:11, persuadability:[14,10,47,11,19], phrma:{p01:46.0,p02i:52,p02g:48,p03h:63,p03u:37,p04:89.0}, prePost:{rank:[23.0,49.0],att1:[71.0,68.0],att2:[54.0,62.0],fav:[31.0,46.0]} },
+  PFF: { tier:3, roi:0.95, highRoi:20, supporters:33, activation:14, influence:17, persuadability:[15,4,38,10,33], phrma:{p01:40.0,p02i:53,p02g:47,p03h:58,p03u:42,p04:79.0}, prePost:{rank:[24.0,32.0],att1:[49.0,60.0],att2:[42.0,44.0],fav:[29.0,32.0]} },
+  HHN: { tier:3, roi:1.05, highRoi:25, supporters:63, activation:29, influence:24, persuadability:[22,3,34,11,31], phrma:{p01:63.0,p02i:46,p02g:54,p03h:59,p03u:42,p04:82.0}, prePost:{rank:[35.0,48.0],att1:[74.0,62.0],att2:[68.0,66.0],fav:[60.0,83.0]} },
+  MFL: { tier:1, roi:1.07, highRoi:26, supporters:53, activation:8, influence:11, persuadability:[19,7,38,11,25], phrma:{p01:51.0,p02i:54,p02g:46,p03h:57,p03u:43,p04:86.0}, prePost:{rank:[25.0,51.0],att1:[74.0,72.0],att2:[57.0,63.0],fav:[43.0,61.0]} },
+  VS:  { tier:3, roi:0.75, highRoi:13, supporters:31, activation:14, influence:14, persuadability:[14,0,28,10,48], phrma:{p01:34.0,p02i:42,p02g:58,p03h:45,p03u:55,p04:64.0}, prePost:{rank:[16.0,30.0],att1:[45.0,50.0],att2:[31.0,35.0],fav:[21.0,21.0]} },
+  UCP: { tier:2, roi:0.98, highRoi:23, supporters:47, activation:9, influence:10, persuadability:[10,13,33,8,36], phrma:{p01:7.0,p02i:86,p02g:14,p03h:19,p03u:81,p04:47.0}, prePost:{rank:[72.0,80.0],att1:[45.0,56.0],att2:[39.0,42.0],fav:[17.0,34.0]} },
+  FJP: { tier:2, roi:1.05, highRoi:24, supporters:59, activation:8, influence:6, persuadability:[16,8,28,12,35], phrma:{p01:18.0,p02i:77,p02g:23,p03h:27,p03u:73,p04:74.0}, prePost:{rank:[54.0,74.0],att1:[62.0,62.0],att2:[53.0,51.0],fav:[31.0,52.0]} },
+  HCP: { tier:2, roi:1.00, highRoi:27, supporters:53, activation:8, influence:6, persuadability:[5,22,28,12,32], phrma:{p01:38.0,p02i:70,p02g:30,p03h:38,p03u:62,p04:80.0}, prePost:{rank:[46.0,66.0],att1:[57.0,53.0],att2:[38.0,54.0],fav:[39.0,45.0]} },
+  GHI: { tier:1, roi:1.09, highRoi:31, supporters:59, activation:6, influence:10, persuadability:[17,14,23,9,36], phrma:{p01:38.0,p02i:80,p02g:20,p03h:31,p03u:69,p04:58.0}, prePost:{rank:[53.0,66.0],att1:[53.0,55.0],att2:[47.0,52.0],fav:[31.0,48.0]} },
+  HAD: { tier:3, roi:1.01, highRoi:24, supporters:60, activation:18, influence:9, persuadability:[19,5,31,14,31], phrma:{p01:43.0,p02i:64,p02g:36,p03h:37,p03u:63,p04:74.0}, prePost:{rank:[49.0,54.0],att1:[54.0,59.0],att2:[52.0,53.0],fav:[51.0,60.0]} },
+  HCI: { tier:2, roi:0.95, highRoi:23, supporters:60, activation:7, influence:15, persuadability:[18,5,34,11,32], phrma:{p01:58.0,p02i:65,p02g:36,p03h:32,p03u:68,p04:68.0}, prePost:{rank:[48.0,50.0],att1:[50.0,63.0],att2:[53.0,57.0],fav:[54.0,67.0]} },
+};
+
+// ─── THEME & TIER STYLING ───
+export const THEME_COLORS = {Leadership:"#a78bfa",Security:"#f87171",Economy:"#34d399",Innovation:"#60a5fa",Patient:"#fbbf24"};
+export const TIER_CONFIG = {
+  1: { bg:"#064e3b", text:"#6ee7b7", accent:"#34d399", label:"TIER 1" },
+  2: { bg:"#854d0e", text:"#fde047", accent:"#eab308", label:"TIER 2" },
+  3: { bg:"#991b1b", text:"#fca5a5", accent:"#ef4444", label:"TIER 3" },
+};
+
+export function getTierNum(roi) { return roi >= 1.07 ? 1 : roi >= 1.00 ? 2 : 3; }
+
+export function getSopColor(v) {
+  if (v >= 13) return { bg:"#065f46", t:"#6ee7b7" };
+  if (v >= 11) return { bg:"#064e3b", t:"#6ee7b7" };
+  if (v >= 10) return { bg:"#1a3a2a", t:"#a7f3d0" };
+  if (v >= 9)  return { bg:"#1e293b", t:"#cbd5e1" };
+  if (v >= 8)  return { bg:"#1a1f2e", t:"#94a3b8" };
+  if (v >= 7)  return { bg:"#1a1520", t:"#94a3b8" };
+  if (v >= 6)  return { bg:"#1f1318", t:"#f9a8a8" };
+  return { bg:"#2d1215", t:"#fca5a5" };
+}
+
+// ─── PERSUADABILITY LABELS ───
+export const PERSUADABILITY_LABELS = ["Strong support","Lean support","Persuadable","Lean oppose","Strong oppose"];
