@@ -1885,7 +1885,7 @@ export default function SegmentProfile() {
       <div style={{ maxWidth:1400, margin:"0 auto" }}>
         {/* Header */}
         <div style={{ marginBottom:14 }}>
-          <div style={{ fontFamily:"'Nunito',sans-serif", fontSize:9, letterSpacing:3, color:"#475569", marginBottom:3 }}>RESERVOIR HEALTH PRISM PULSE</div>
+          <div style={{ fontFamily:"'Nunito',sans-serif", fontSize:9, letterSpacing:3, color:"#475569", marginBottom:3 }}>RESERVOIR HEALTH PRISM</div>
           <h1 style={{ fontFamily:"'Roboto',sans-serif", fontSize:22, fontWeight:800, color:"#f1f5f9", margin:0 }}>PRISM AUDIENCE SEGMENTATION</h1>
           <div style={{ fontFamily:"'Roboto',sans-serif", fontSize:13, fontWeight:600, color:"#a78bfa", marginTop:2 }}>PERSONA PROFILES</div>
         </div>
@@ -2007,7 +2007,7 @@ export default function SegmentProfile() {
         {/* Footer */}
         <div style={{ marginTop:16, padding:"8px 0", borderTop:"1px solid #1e293b", fontSize:8, color:"#475569", fontFamily:"'Nunito',sans-serif", display:"flex", justifyContent:"space-between" }}>
           <span>PRISM V3.1 · RESERVOIR COMMUNICATIONS GROUP · CONFIDENTIAL & PROPRIETARY</span>
-          <span>16-SEGMENT BEHAVIORAL SEGMENTATION · PRISM PROFILE</span>
+          <span>PRISM AUDIENCE INTELLIGENCE PLATFORM · PERSONA PROFILES</span>
         </div>
       </div>
     </div>
