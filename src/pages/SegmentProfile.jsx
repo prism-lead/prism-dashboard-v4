@@ -208,6 +208,58 @@ const PREPOST = {
 };
 
 // ─── VECTOR DATA ───
+// ─── STUDY-SPECIFIC ROI DATA ───
+const STUDY_ROI = {
+  "TSP":{tier:3,
+    ESI:{roi:0.81,highRoi:25,supporters:73,activation:23,influence:5},
+    MA:{roi:0.91,highRoi:34,supporters:51,activation:27,influence:5}},
+  "CEC":{tier:1,
+    ESI:{roi:1.01,highRoi:36,supporters:86,activation:36,influence:3},
+    MA:{roi:1.24,highRoi:46,supporters:80,activation:27,influence:3}},
+  "TC":{tier:1,
+    ESI:{roi:1.11,highRoi:38,supporters:91,activation:43,influence:3},
+    MA:{roi:0.81,highRoi:27,supporters:61,activation:15,influence:3}},
+  "WE":{tier:1,
+    ESI:{roi:1.10,highRoi:38,supporters:87,activation:34,influence:3},
+    MA:{roi:0.94,highRoi:32,supporters:48,activation:17,influence:3}},
+  "PP":{tier:2,
+    ESI:{roi:1.02,highRoi:36,supporters:79,activation:33,influence:5},
+    MA:{roi:1.03,highRoi:42,supporters:64,activation:27,influence:5}},
+  "HF":{tier:1,
+    ESI:{roi:1.22,highRoi:36,supporters:82,activation:27,influence:23},
+    MA:{roi:0.88,highRoi:31,supporters:73,activation:30,influence:23}},
+  "PFF":{tier:2,
+    ESI:{roi:1.04,highRoi:34,supporters:84,activation:27,influence:12},
+    MA:{roi:0.98,highRoi:34,supporters:51,activation:22,influence:12}},
+  "HHN":{tier:1,
+    ESI:{roi:1.04,highRoi:37,supporters:75,activation:25,influence:20},
+    MA:{roi:1.05,highRoi:43,supporters:69,activation:35,influence:20}},
+  "MFL":{tier:3,
+    ESI:{roi:0.81,highRoi:31,supporters:82,activation:28,influence:5},
+    MA:{roi:0.99,highRoi:38,supporters:74,activation:34,influence:5}},
+  "VS":{tier:3,
+    ESI:{roi:0.84,highRoi:26,supporters:74,activation:23,influence:4},
+    MA:{roi:0.84,highRoi:29,supporters:52,activation:22,influence:4}},
+  "UCP":{tier:3,
+    ESI:{roi:0.89,highRoi:37,supporters:68,activation:32,influence:5},
+    MA:{roi:1.19,highRoi:49,supporters:79,activation:35,influence:5}},
+  "FJP":{tier:1,
+    ESI:{roi:1.01,highRoi:42,supporters:75,activation:33,influence:5},
+    MA:{roi:1.04,highRoi:43,supporters:69,activation:35,influence:5}},
+  "HCP":{tier:3,
+    ESI:{roi:0.85,highRoi:33,supporters:77,activation:22,influence:4},
+    MA:{roi:1.25,highRoi:50,supporters:73,activation:45,influence:4}},
+  "HAD":{tier:1,
+    ESI:{roi:1.10,highRoi:40,supporters:81,activation:33,influence:10},
+    MA:{roi:0.86,highRoi:37,supporters:61,activation:27,influence:10}},
+  "HCI":{tier:1,
+    ESI:{roi:1.17,highRoi:45,supporters:87,activation:29,influence:4},
+    MA:{roi:0.91,highRoi:30,supporters:61,activation:25,influence:4}},
+  "GHI":{tier:2,
+    ESI:{roi:0.98,highRoi:36,supporters:85,activation:35,influence:7},
+    MA:{roi:1.06,highRoi:43,supporters:72,activation:32,influence:7}},
+};
+
 const GOP_VECTORS = {
   TSP: { trust:0.37, science:0.23, autonomy:-0.20, markets:-0.11 },
   CEC: { trust:0.24, science:0.26, autonomy:-0.30, markets:-0.01 },
@@ -1993,11 +2045,10 @@ export default function SegmentProfile() {
 
         {/* ═══ PROFILE HEADER ═══ */}
         <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:14 }}>
-          <div style={{ width:56, height:56, borderRadius:"50%", background:"#1e293b", border:`3px solid ${tc}`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:16, fontWeight:700, color:tc, fontFamily:"'Nunito',sans-serif" }}>{seg.code.slice(0,2)}</div>
+          <div style={{ width:56, height:56, borderRadius:"50%", background:"#1e293b", border:`3px solid ${tc}`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:14, fontWeight:700, color:tc, fontFamily:"'Nunito',sans-serif", letterSpacing:1 }}>{seg.code}</div>
           <div>
             <div style={{ display:"flex", alignItems:"center", gap:6, flexWrap:"wrap" }}>
               <h3 style={{ fontFamily:"'Roboto',sans-serif", fontSize:18, color:"#f1f5f9", fontWeight:700, margin:0, textTransform:"uppercase" }}>{seg.name}</h3>
-              <span style={{ fontSize:8, fontWeight:700, padding:"2px 6px", borderRadius:3, background:TIER_BG[t], color:TIER_TEXT[t], fontFamily:"'Nunito',sans-serif" }}>{TIER_LABELS[t]}</span>
               <span style={{ fontSize:8, padding:"2px 6px", borderRadius:3, background:seg.party==="GOP"?"#7f1d1d":"#1e3a5f", color:seg.party==="GOP"?"#fca5a5":"#93c5fd", fontFamily:"'Nunito',sans-serif", fontWeight:600 }}>{seg.party}</span>
               <span style={{ fontSize:8, padding:"2px 6px", borderRadius:3, background:"#1e293b", color:"#94a3b8", fontFamily:"'Nunito',sans-serif" }}>{seg.pop}% of electorate</span>
             </div>
@@ -2030,33 +2081,42 @@ export default function SegmentProfile() {
             </div>
           </div>
 
-          {/* ROI Panel */}
-          <div style={{ background:"#111827", borderRadius:8, padding:12, border:"1px solid #1e293b" }}>
-            <div style={{ fontSize:8, fontWeight:700, color:"#94a3b8", fontFamily:"'Roboto Slab',serif", textTransform:"uppercase", letterSpacing:1.5, textAlign:"center", marginBottom:6 }}>PRISM ROI</div>
-            <div style={{ textAlign:"center", marginBottom:4 }}>
+          {/* ROI Cards — one per study, stacked */}
+          <div style={{ display:"flex", flexDirection:"column", gap:8 }}>
+            <div style={{ textAlign:"center", marginBottom:2 }}>
               <span style={{ fontSize:10, fontWeight:700, padding:"3px 14px", borderRadius:4, background:TIER_BG[t], color:TIER_TEXT[t], fontFamily:"'Nunito',sans-serif", letterSpacing:1.5 }}>{TIER_LABELS[t]}</span>
             </div>
-            <div style={{ textAlign:"center", padding:"6px 0", borderBottom:"1px solid #1e293b", marginBottom:6 }}>
-              <div style={{ fontSize:28, fontWeight:800, color:tc, fontFamily:"'Nunito',sans-serif" }}>{seg.roi.toFixed(2)}</div>
-            </div>
-            <div style={{ display:"flex", flexDirection:"column", gap:6 }}>
-              <div style={{ display:"flex", alignItems:"center", gap:8 }}>
-                <MiniDonut value={seg.highRoi} size={36} color={tc} />
-                <div><div style={{ fontSize:9, color:"#e2e8f0", fontWeight:600 }}>% High ROI</div><div style={{ fontSize:7, color:"#64748b" }}>High-return respondents</div></div>
-              </div>
-              <div style={{ display:"flex", alignItems:"center", gap:8 }}>
-                <MiniDonut value={seg.supporters} size={36} color="#3b82f6" />
-                <div><div style={{ fontSize:9, color:"#e2e8f0", fontWeight:600 }}>% Supporters</div><div style={{ fontSize:7, color:"#64748b" }}>Base industry support</div></div>
-              </div>
-              <div style={{ display:"flex", alignItems:"center", gap:8 }}>
-                <MiniDonut value={seg.activation} size={36} color="#34d399" />
-                <div><div style={{ fontSize:9, color:"#e2e8f0", fontWeight:600 }}>Activation</div><div style={{ fontSize:7, color:"#64748b" }}>Engagement probability</div></div>
-              </div>
-              <div style={{ display:"flex", alignItems:"center", gap:8, paddingTop:4, borderTop:"1px solid #1e293b" }}>
-                <div style={{ width:36, textAlign:"center" }}><div style={{ fontSize:14, fontWeight:800, color:seg.influence>=10?"#fbbf24":"#64748b", fontFamily:"'Nunito',sans-serif" }}>{seg.influence}%</div></div>
-                <div><div style={{ fontSize:9, color:"#e2e8f0", fontWeight:600 }}>Influence<sup style={{ fontSize:6 }}>360</sup></div></div>
-              </div>
-            </div>
+            {STUDY_ROI[seg.code] && ["ESI","MA"].map(study => {
+              const d = STUDY_ROI[seg.code][study];
+              if (!d) return null;
+              const roiColor = tc;
+              return (
+                <div key={study} style={{ background:"#111827", borderRadius:8, padding:"8px 10px", border:"1px solid #1e293b" }}>
+                  <div style={{ fontSize:7, fontWeight:700, color:"#94a3b8", fontFamily:"'Roboto Slab',serif", textTransform:"uppercase", letterSpacing:1.5, textAlign:"center", marginBottom:4 }}>{study === "ESI" ? "ESI STUDY" : "MA STUDY"} ROI</div>
+                  <div style={{ textAlign:"center", padding:"4px 0", borderBottom:"1px solid #1e293b", marginBottom:5 }}>
+                    <div style={{ fontSize:24, fontWeight:800, color:roiColor, fontFamily:"'Nunito',sans-serif" }}>{d.roi.toFixed(2)}</div>
+                  </div>
+                  <div style={{ display:"flex", flexDirection:"column", gap:4 }}>
+                    <div style={{ display:"flex", alignItems:"center", gap:6 }}>
+                      <MiniDonut value={d.highRoi} size={30} color={roiColor} />
+                      <div><div style={{ fontSize:8, color:"#e2e8f0", fontWeight:600 }}>% High ROI</div></div>
+                    </div>
+                    <div style={{ display:"flex", alignItems:"center", gap:6 }}>
+                      <MiniDonut value={d.supporters} size={30} color="#3b82f6" />
+                      <div><div style={{ fontSize:8, color:"#e2e8f0", fontWeight:600 }}>% Supporters</div></div>
+                    </div>
+                    <div style={{ display:"flex", alignItems:"center", gap:6 }}>
+                      <MiniDonut value={d.activation} size={30} color="#34d399" />
+                      <div><div style={{ fontSize:8, color:"#e2e8f0", fontWeight:600 }}>Activation</div></div>
+                    </div>
+                    <div style={{ display:"flex", alignItems:"center", gap:6, paddingTop:3, borderTop:"1px solid #1e293b" }}>
+                      <div style={{ width:30, textAlign:"center" }}><div style={{ fontSize:12, fontWeight:800, color:d.influence>=10?"#fbbf24":"#64748b", fontFamily:"'Nunito',sans-serif" }}>{d.influence}%</div></div>
+                      <div><div style={{ fontSize:8, color:"#e2e8f0", fontWeight:600 }}>Influence<sup style={{ fontSize:5 }}>360</sup></div></div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
