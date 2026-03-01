@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import DATA from "../data/studyData";
 
 // ─── SEGMENTS & SoP from data file ───
@@ -33,6 +34,7 @@ function Tooltip({msg,x,y}){
 }
 
 export default function MessageMap(){
+  const navigate = useNavigate();
   const [sortCol,setSortCol]=useState(null);
   const [tooltip,setTooltip]=useState(null);
   const [study,setStudy]=useState("ESI");
@@ -101,7 +103,7 @@ export default function MessageMap(){
               {SEGMENTS.map((seg,si)=>(
                 <th key={seg.id} onClick={()=>setSortCol(sortCol===(si+segStartIdx)?null:(si+segStartIdx))} style={{background:sortCol===(si+segStartIdx)?"#1a2332":"#000",minWidth:80,padding:"4px 2px",cursor:"pointer",fontFamily:"'Poppins',sans-serif",fontSize:7,fontWeight:700,color:sortCol===(si+segStartIdx)?"#f1f5f9":"#cbd5e1",letterSpacing:0.2,lineHeight:1.2,verticalAlign:"bottom",borderBottom:sortCol===(si+segStartIdx)?"2px solid #60a5fa":"none",transition:"all 0.15s",textTransform:"uppercase"}}>
                   <div style={{fontSize:7,color:"#64748b",fontFamily:"'JetBrains Mono',monospace",marginBottom:1}}>{seg.pop}%</div>
-                  <div style={{marginBottom:2,minHeight:30}}>{seg.name.toUpperCase()}</div>
+                  <div onClick={(e)=>{e.stopPropagation();navigate('/profile?seg='+seg.code)}} style={{marginBottom:2,minHeight:30,cursor:"pointer",textDecoration:"underline",textDecorationColor:"#334155",textUnderlineOffset:2}}>{seg.name.toUpperCase()}</div>
                 </th>
               ))}
               {/* PE sub-header */}
