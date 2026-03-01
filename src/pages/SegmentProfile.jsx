@@ -290,31 +290,31 @@ const GOP_AXES = [
 // ─── VECTOR AXIS DEFINITIONS (hover tooltips) ───
 const VECTOR_DEFS = {
   trust: {
-    title: "TRUST: Higher Trust ↔ Higher Distrust",
+    title: "TRUST: Cynicism ↔ Trust",
     text: "Measures baseline institutional confidence in the healthcare establishment — federal agencies, medical associations, and credentialed expertise. Higher Trust segments accept guidance from public health authorities as generally reliable, while Higher Distrust segments perceive these institutions as captured by political or financial interests and filter recommendations accordingly."
   },
   science: {
-    title: "SCIENCE: Trust Science ↔ Natural/Purity Focused",
+    title: "SCIENCE: Natural/Purity Focused  ↔ Trust in Science",
     text: "Captures whether a segment embraces evidence-based biomedical interventions or gravitates toward natural remedies, holistic wellness, and bodily purity. Trust Science segments accept clinical trial evidence and pharmaceutical solutions at face value, while Natural/Purity segments view synthetic interventions with skepticism and prioritize organic, minimally processed alternatives."
   },
   autonomy: {
-    title: "FREEDOM: Public Health ↔ Body Autonomy",
-    text: "Reveals the tension between collective health mandates and individual sovereignty over medical decisions. Public Health segments accept vaccination requirements, masking protocols, and regulatory oversight as legitimate community protections, while Body Autonomy segments view any compulsory health measure as an unacceptable infringement on personal liberty."
+    title: "AUTONOMY: Public Health ↔ Body Autonomy",
+    text: "Reveals the tension between collective health mandates and individual sovereignty over medical decisions. Public Health oriented segments accept vaccination requirements, masking protocols, and regulatory oversight as legitimate community protections, while Body Autonomy segments view any compulsory health measure as an unacceptable infringement on personal liberty."
   },
   markets: {
     title: "MARKETS: Free Markets ↔ Economic Populism",
     text: "Distinguishes between segments that trust market competition to optimize healthcare pricing and access versus those demanding government intervention to control costs. Free Market segments favor deregulation, consumer choice, and innovation incentives, while Economic Populist segments want aggressive price controls, trade policy enforcement, and protecting access to care."
   },
   reform: {
-    title: "REFORM: System Overhaul ↔ Incremental Change",
-    text: "Measures how aggressively a segment wants to restructure the U.S. healthcare system, from single-payer transformation to working within existing frameworks. Segments scoring toward System Overhaul see the current architecture as fundamentally broken, while those toward Incremental Change believe targeted policy fixes can deliver meaningful progress without systemic disruption."
+    title: "REFORM: Status Quo ↔ System Reform",
+    text: "Measures how aggressively a segment wants to restructure the U.S. healthcare system, from single-payer transformation to working within existing frameworks. Segments scoring toward System Refrorm see the current architecture as fundamentally broken, while those toward Status Quo believe targeted policy fixes can deliver meaningful progress without systemic disruption."
   },
   equity: {
-    title: "JUSTICE: Equity Focus ↔ Individual Responsibility",
-    text: "Measures whether a segment frames healthcare outcomes primarily as a product of structural inequities or personal choices and accountability. Equity-focused segments prioritize closing disparate access gaps across race, income, and geography, while Individual Responsibility segments emphasize personal health behaviors and merit-based resource allocation."
+    title: "JUSTICE: Individual Responsibility ↔ Justice & Equity Focus",
+    text: "Measures whether a segment frames healthcare outcomes primarily as a product of structural inequities or personal choices and accountability. Justice-focused segments prioritize closing disparate access gaps across race, income, and geography, while Individual Responsibility segments emphasize personal health behaviors and merit-based resource allocation."
   },
   domestic: {
-    title: "LEADERSHIP: Global Health Focus ↔ American Leadership",
+    title: "LEADERSHIP: American Health Leadership ↔ Global Health Focus",
     text: "Reveals whether a segment sees U.S. healthcare policy through an internationalist lens or a nationalist one. Global Health segments see the top threats to health coming from global pandemics and climate change, and support multilateral cooperation. American healthcare leadership looks to the U.S. to set the global standard through domestic innovation and competitive excellence."
   },
   private: {
