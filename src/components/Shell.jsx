@@ -2,10 +2,10 @@ import { NavLink, Outlet } from "react-router-dom";
 import { C, FONT } from "../data/theme";
 
 const NAV_ITEMS = [
-  { to: "/",          label: "Segment Map" },
-  { to: "/roi",       label: "Audience ROI" },
-  { to: "/messages",  label: "Message Map" },
-  { to: "/profile",   label: "Segment Profile" },
+  { to: "/",          label: "AUDIENCE MAP" },
+  { to: "/roi",       label: "AUDIENCE ROI" },
+  { to: "/messages",  label: "MESSAGE MAP" },
+  { to: "/profile",   label: "AUDIENCE PROFILES" },
 ];
 
 export default function Shell() {
@@ -44,8 +44,8 @@ export default function Shell() {
                 padding: "6px 14px",
                 borderRadius: 6,
                 fontSize: 11,
-                fontWeight: isActive ? 700 : 500,
-                fontFamily: FONT,
+                fontWeight: isActive ? 500 : 300,
+                fontFamily: Nunito,
                 color: isActive ? C.white : C.textMuted,
                 background: isActive ? `${C.steel}20` : "transparent",
                 textDecoration: "none",
