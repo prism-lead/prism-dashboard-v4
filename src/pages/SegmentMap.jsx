@@ -191,8 +191,8 @@ export default function BubbleMap() {
           width="100%"
           style={{ display: "block" }}
           onClick={(e) => {
-            if (e.target === e.currentTarget) setActive(null);
-          }}
+            if (e.target.tagName === "svg" || e.target.tagName === "rect") setActive(null);
+          }}}
         >
           {/* Subtle grid */}
           <defs>
