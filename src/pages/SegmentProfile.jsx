@@ -2028,13 +2028,14 @@ export default function SegmentProfile() {
           {SEGMENTS.map((s,i) => {
             const isSel = segIdx === i;
             const st = s.tier;
+            const pc = s.party==="GOP"?"#fca5a5":"#93c5fd";
             return (
               <button key={s.id} onClick={()=>{setSegIdx(i);setProfileTab("demo")}}
                 style={{
                   fontSize:8, padding:"3px 8px", borderRadius:3, cursor:"pointer",
-                  border:isSel?`1px solid ${TIER_ACCENT[st]}`:"1px solid #1e293b",
+                  border:isSel?`1px solid ${pc}`:"1px solid #1e293b",
                   background:isSel?(s.party==="GOP"?"#2a1015":"#0f1a2e"):"transparent",
-                  color:s.party==="GOP"?"#fca5a5":"#93c5fd",
+                  color:pc,
                   fontFamily:"'Nunito',sans-serif",
                   fontWeight:isSel?700:400, transition:"all 0.15s",
                 }}>
@@ -2046,7 +2047,7 @@ export default function SegmentProfile() {
 
         {/* ═══ PROFILE HEADER ═══ */}
         <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:14 }}>
-          <div style={{ width:56, height:56, borderRadius:"50%", background:"#1e293b", border:`3px solid ${tc}`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:14, fontWeight:700, color:tc, fontFamily:"'Nunito',sans-serif", letterSpacing:1 }}>{seg.code}</div>
+          <div style={{ width:56, height:56, borderRadius:"50%", background:"#1e293b", border:`3px solid ${pc}`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:14, fontWeight:700, color:tc, fontFamily:"'Nunito',sans-serif", letterSpacing:1 }}>{seg.code}</div>
           <div>
             <div style={{ display:"flex", alignItems:"center", gap:6, flexWrap:"wrap" }}>
               <h3 style={{ fontFamily:"'Roboto',sans-serif", fontSize:18, color:"#f1f5f9", fontWeight:700, margin:0, textTransform:"uppercase" }}>{seg.name}</h3>
@@ -2057,7 +2058,7 @@ export default function SegmentProfile() {
         </div>
 
         {/* Quote */}
-        <div style={{ background:"#111827", borderRadius:6, padding:"10px 14px", borderLeft:`3px solid ${tc}`, marginBottom:14 }}>
+        <div style={{ background:"#111827", borderRadius:6, padding:"10px 14px", borderLeft:`3px solid ${pc}`, marginBottom:14 }}>
           <div style={{ fontFamily:"'Nunito',sans-serif", fontSize:13, color:"#e2e8f0", fontStyle:"italic", lineHeight:1.55 }}>"{seg.persona.quote}"</div>
         </div>
 
