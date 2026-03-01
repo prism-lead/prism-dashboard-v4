@@ -179,27 +179,30 @@ function SegmentColumn({ seg, expanded, PRE_POST_METRICS, onNav }) {
         onClick={onNav}
         style={{
         display: "flex", flexDirection: "column", alignItems: "center",
-        padding: "8px 2px 6px", borderBottom: `1px solid ${C.border}`,
-        width: "100%", height: H.header, justifyContent: "center",
+        padding: "6px 2px 4px", borderBottom: `1px solid ${C.border}`,
+        width: "100%", height: H.header,
         cursor: "pointer",
       }}>
         <div style={{
           width: 32, height: 32, borderRadius: "50%", border: `2px solid ${partyColor}`,
           display: "flex", alignItems: "center", justifyContent: "center",
           fontSize: 8, fontWeight: 800, color: partyColor,
-          fontFamily: "'JetBrains Mono',monospace", marginBottom: 3
+          fontFamily: "'JetBrains Mono',monospace", flexShrink: 0
         }}>{seg.code}</div>
         <div style={{
           fontSize: 6, fontWeight: 700, color: partyColor,
           fontFamily: "'JetBrains Mono',monospace", textAlign: "center",
-          lineHeight: 1.2, marginBottom: 3
+          lineHeight: 1.2, flex: 1, display: "flex", alignItems: "center", justifyContent: "center",
+          padding: "2px 0"
         }}>{seg.name.toUpperCase()}</div>
         <div style={{
-          fontSize: 8, color: C.text2, fontFamily: "'JetBrains Mono',monospace", marginBottom: 2
+          fontSize: 8, color: C.text2, fontFamily: "'JetBrains Mono',monospace",
+          flexShrink: 0, marginBottom: 2
         }}>{seg.pop}%</div>
         <span style={{
           fontSize: 7, fontWeight: 700, padding: "1px 5px", borderRadius: 3,
-          background: tierBg(t), color: tc, fontFamily: "'JetBrains Mono',monospace"
+          background: tierBg(t), color: tc, fontFamily: "'JetBrains Mono',monospace",
+          flexShrink: 0
         }}>{tierLabel(t)}</span>
       </div>
 
