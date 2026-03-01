@@ -1990,7 +1990,7 @@ function WellnessPanel({ segIdx }) {
 const PROFILE_TABS = [
   { id:"demo", label:"DEMOGRAPHICS" },
   { id:"beliefs", label:"BELIEFS" },
-  { id:"ideology", label:"VALUESs" },
+  { id:"ideology", label:"VALUES" },
   { id:"trust", label:"TRUST" },
   { id:"exp", label:"EXPERIENCE" },
   { id:"wellness", label:"CULTURE" },
