@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import DATA from "../data/studyData";
 
 // ─── STUDY DATA (from auto-generated file) ───
@@ -9,7 +10,7 @@ const STUDY_DATA = {
 
 // ─── FIXED ROW HEIGHTS (ensures label column and data columns align) ───
 const H = {
-  header: 105,
+  header: 120,
   roi: 54,
   persuasion: 205,
   prePostRow: 22,
@@ -162,7 +163,7 @@ function MetricLabel({ metric }) {
 }
 
 // ─── SEGMENT COLUMN ───
-function SegmentColumn({ seg, expanded, PRE_POST_METRICS }) {
+function SegmentColumn({ seg, expanded, PRE_POST_METRICS, onNav }) {
   const t = getTier(seg.roi, seg.code);
   const tc = tierColor(t);
   const partyColor = seg.party === "GOP" ? C.gop : C.dem;
@@ -174,22 +175,25 @@ function SegmentColumn({ seg, expanded, PRE_POST_METRICS }) {
       width: 62, flexShrink: 0
     }}>
       {/* ── HEADER ── */}
-      <div style={{
+      <div
+        onClick={onNav}
+        style={{
         display: "flex", flexDirection: "column", alignItems: "center",
         padding: "8px 2px 6px", borderBottom: `1px solid ${C.border}`,
-        width: "100%", height: H.header, justifyContent: "center"
+        width: "100%", height: H.header, justifyContent: "center",
+        cursor: "pointer",
       }}>
         <div style={{
           width: 32, height: 32, borderRadius: "50%", border: `2px solid ${partyColor}`,
           display: "flex", alignItems: "center", justifyContent: "center",
-          fontSize: 9, fontWeight: 800, color: partyColor,
+          fontSize: 8, fontWeight: 800, color: partyColor,
           fontFamily: "'JetBrains Mono',monospace", marginBottom: 3
-        }}>{seg.code.slice(0, 2)}</div>
+        }}>{seg.code}</div>
         <div style={{
-          fontSize: 7, fontWeight: 700, color: partyColor,
+          fontSize: 6, fontWeight: 700, color: partyColor,
           fontFamily: "'JetBrains Mono',monospace", textAlign: "center",
           lineHeight: 1.2, marginBottom: 3
-        }}>{seg.code}</div>
+        }}>{seg.name.toUpperCase()}</div>
         <div style={{
           fontSize: 8, color: C.text2, fontFamily: "'JetBrains Mono',monospace", marginBottom: 2
         }}>{seg.pop}%</div>
@@ -283,6 +287,7 @@ function SegmentColumn({ seg, expanded, PRE_POST_METRICS }) {
 
 // ─── MAIN GRID ───
 export default function AudienceROI() {
+  const navigate = useNavigate();
   const [expanded, setExpanded] = useState(false);
   const [study, setStudy] = useState("ESI");
   const { segments: SEGMENTS, prePostMetrics: PRE_POST_METRICS } = STUDY_DATA[study];
@@ -459,7 +464,7 @@ export default function AudienceROI() {
             <div style={{ display: "flex", borderRight: `2px solid ${C.border}` }}>
               {gopSegs.map(s => (
                 <div key={s.code} style={{ borderRight: `1px solid ${C.border}` }}>
-                  <SegmentColumn seg={s} expanded={expanded} PRE_POST_METRICS={PRE_POST_METRICS} />
+                  <SegmentColumn seg={s} expanded={expanded} PRE_POST_METRICS={PRE_POST_METRICS} onNav={() => navigate('/profile?seg=' + s.code)} />
                 </div>
               ))}
             </div>
@@ -467,7 +472,7 @@ export default function AudienceROI() {
             <div style={{ display: "flex" }}>
               {demSegs.map(s => (
                 <div key={s.code} style={{ borderRight: `1px solid ${C.border}` }}>
-                  <SegmentColumn seg={s} expanded={expanded} PRE_POST_METRICS={PRE_POST_METRICS} />
+                  <SegmentColumn seg={s} expanded={expanded} PRE_POST_METRICS={PRE_POST_METRICS} onNav={() => navigate('/profile?seg=' + s.code)} />
                 </div>
               ))}
             </div>
