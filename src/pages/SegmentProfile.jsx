@@ -1988,13 +1988,13 @@ function WellnessPanel({ segIdx }) {
 }
 
 const PROFILE_TABS = [
-  { id:"demo", label:"Demographics" },
-  { id:"beliefs", label:"What They Believe" },
-  { id:"ideology", label:"Ideology Profile" },
-  { id:"trust", label:"Trust Architecture" },
-  { id:"exp", label:"Health Coverage" },
-  { id:"wellness", label:"Wellness" },
-  { id:"media", label:"Media Footprint" },
+  { id:"demo", label:"DEMOGRAPHICS" },
+  { id:"beliefs", label:"BELIEFS" },
+  { id:"ideology", label:"VALUES" },
+  { id:"trust", label:"TRUST" },
+  { id:"exp", label:"EXPERIENCE" },
+  { id:"wellness", label:"CULTURE" },
+  { id:"media", label:"MEDIA" },
 ];
 
 export default function SegmentProfile() {
@@ -2005,7 +2005,7 @@ export default function SegmentProfile() {
   const [profileTab, setProfileTab] = useState("demo");
   const seg = SEGMENTS[segIdx];
   const t = seg.tier;
-  const tc = TIER_ACCENT[t];
+  const tc = seg.party === "GOP" ? "#ef4444" : "#3b82f6";
 
   return (
     <div style={{ fontFamily:"'Nunito',-apple-system,sans-serif", color:"#e2e8f0" }}>
@@ -2017,9 +2017,9 @@ export default function SegmentProfile() {
       <div style={{ maxWidth:1400, margin:"0 auto" }}>
         {/* Header */}
         <div style={{ marginBottom:14 }}>
-          <div style={{ fontFamily:"'Nunito',sans-serif", fontSize:9, letterSpacing:3, color:"#475569", marginBottom:3 }}>RESERVOIR HEALTH PRISM PULSE</div>
-          <h1 style={{ fontFamily:"'Roboto',sans-serif", fontSize:22, fontWeight:800, color:"#f1f5f9", margin:0 }}>SEGMENT PROFILE</h1>
-          <div style={{ fontFamily:"'Roboto',sans-serif", fontSize:13, fontWeight:600, color:"#a78bfa", marginTop:2 }}>16-SEGMENT BEHAVIORAL SEGMENTATION</div>
+          <div style={{ fontFamily:"'Nunito',sans-serif", fontSize:9, letterSpacing:3, color:"#475569", marginBottom:3 }}>RESERVOIR HEALTH PRISM</div>
+          <h1 style={{ fontFamily:"'Roboto',sans-serif", fontSize:22, fontWeight:800, color:"#f1f5f9", margin:0 }}>PERSONA PROFILE</h1>
+          <div style={{ fontFamily:"'Roboto',sans-serif", fontSize:13, fontWeight:600, color:"#a78bfa", marginTop:2 }}>PRISM AUDIENCE INTELLIGENCE</div>
         </div>
 
         {/* Segment selector */}
@@ -2127,7 +2127,7 @@ export default function SegmentProfile() {
           {PROFILE_TABS.map(tab => (
             <button key={tab.id} onClick={()=>setProfileTab(tab.id)} style={{
               padding:"8px 18px", borderRadius:"6px 6px 0 0", border:"none", cursor:"pointer",
-              fontSize:11, fontWeight:profileTab===tab.id?700:500, fontFamily:"'Roboto',sans-serif",
+              fontSize:11, fontWeight:profileTab===tab.id?500:300, fontFamily:"'Nunito',sans-serif",
               background:profileTab===tab.id?C.card:"transparent",
               color:profileTab===tab.id?"#fff":"#7b8da3",
               borderBottom:profileTab===tab.id?`2px solid ${C.accent}`:"2px solid transparent",
@@ -2148,7 +2148,7 @@ export default function SegmentProfile() {
         {/* Footer */}
         <div style={{ marginTop:16, padding:"8px 0", borderTop:"1px solid #1e293b", fontSize:8, color:"#475569", fontFamily:"'Nunito',sans-serif", display:"flex", justifyContent:"space-between" }}>
           <span>PRISM V3.1 · RESERVOIR COMMUNICATIONS GROUP · CONFIDENTIAL & PROPRIETARY</span>
-          <span>16-SEGMENT BEHAVIORAL SEGMENTATION · PRISM PROFILE</span>
+          <span>PRISM AUDIENCE INTELLIGENCE · PRISM PERSONAS</span>
         </div>
       </div>
     </div>
