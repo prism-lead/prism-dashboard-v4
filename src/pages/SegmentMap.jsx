@@ -21,6 +21,26 @@ const BUBBLES = [
   { code:"WE",  name:"Wellness\nEvangelists",            party:"GOP", left:3568, top:400,  w:1100,z:1, pop:9  },
 ];
 
+//Persona cards
+const CARD_IMAGES = {
+  CEC: "/prism-demo/CECCard.png",
+  TC:  "/prism-demo/TCCard.png",
+  WE:  "/prism-demo/WECard.png",
+  TSP: "/prism-demo/TSPCard.png",
+  HF:  "/prism-demo/HFCard.png",
+  PP:  "/prism-demo/PPCard.png",
+  PFF: "/prism-demo/PFFCard.png",
+  HHN: "/prism-demo/HHNCard.png",
+  MFL: "/prism-demo/MFLCard.png",
+  VS: "/prism-demo/VSCard.png",
+  UCP: "/prism-demo/UCPCard.png",
+  FJP: "/prism-demo/FJPCard.png",
+  HCP: "/prism-demo/HCPCard.png",
+  HAD: "/prism-demo/HADCard.png",
+  HCI: "/prism-demo/HCICard.png",
+  GHI: "/prism-demo/GHICard.png",
+};
+
 // Stage dimensions from the HTML
 const STAGE_W = 5325;
 const STAGE_H = 1959;
@@ -205,12 +225,45 @@ export default function BubbleMap() {
               isDim={active !== null && active !== b.code}
               onClick={(e) => {
                 e.stopPropagation();
-                navigate('/profile?seg=' + b.code);
+                if (active === b.code) {
+                  navigate('/profile?seg=' + b.code);
+                } else {
+                  setActive(b.code);
+                }
               }}
             />
           ))}
         </svg>
 
+      {active && CARD_IMAGES[active] && (
+        <div
+          onClick={() => navigate('/profile?seg=' + active)}
+          style={{
+            position: "absolute",
+            top: "50%",
+            right: 40,
+            transform: "translateY(-50%)",
+            cursor: "pointer",
+            zIndex: 200,
+            filter: "drop-shadow(0 8px 32px rgba(0,0,0,0.7))",
+            transition: "opacity 0.3s ease",
+          }}
+        >
+          <img
+             src={CARD_IMAGES[active]}
+             alt={active}
+            style={{ width: 320, borderRadius: 16 }}
+          />
+          <div style={{
+            textAlign: "center", marginTop: 8,
+            fontSize: 10, color: "#64748b",
+            fontFamily: "'JetBrains Mono',monospace",
+          }}>
+            Click card to view full profile →
+          </div>
+      </div>
+    )}    
+      
         {/* Legend */}
         <div style={{
           display: "flex", justifyContent: "center", gap: 24, marginTop: 12, padding: "8px 0"
