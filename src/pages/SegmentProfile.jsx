@@ -328,7 +328,7 @@ const TIER_BG = {1:"#064e3b",2:"#854d0e",3:"#991b1b"};
 const TIER_TEXT = {1:"#6ee7b7",2:"#fde047",3:"#fca5a5"};
 const TIER_ACCENT = {1:"#34d399",2:"#eab308",3:"#ef4444"};
 const TIER_LABELS = {1:"TIER 1",2:"TIER 2",3:"TIER 3"};
-function getTierNum(r){return r>=1.07?1:r>=1.00?2:3}
+
 
 // Color palette
 const C = {
@@ -1951,7 +1951,7 @@ export default function SegmentProfile() {
   const [segIdx, setSegIdx] = useState(initIdx);
   const [profileTab, setProfileTab] = useState("demo");
   const seg = SEGMENTS[segIdx];
-  const t = getTierNum(seg.roi);
+  const t = seg.tier;
   const tc = TIER_ACCENT[t];
 
   return (
@@ -1974,7 +1974,7 @@ export default function SegmentProfile() {
           <span style={{ fontSize:8, color:"#475569", fontFamily:"'Nunito',sans-serif", marginRight:4 }}>SEGMENT:</span>
           {SEGMENTS.map((s,i) => {
             const isSel = segIdx === i;
-            const st = getTierNum(s.roi);
+            const st = s.tier;
             return (
               <button key={s.id} onClick={()=>{setSegIdx(i);setProfileTab("demo")}}
                 style={{

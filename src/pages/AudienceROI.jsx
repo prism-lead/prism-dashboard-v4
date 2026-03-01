@@ -43,7 +43,11 @@ const C = {
   persuasion: "#5b93c7",
 };
 
-function getTier(r) { return r >= 1.07 ? 1 : r >= 1.00 ? 2 : 3; }
+const ASSIGNED_TIERS = {
+  TSP:3, CEC:1, TC:1, HF:1, PP:2, WE:1, PFF:2, HHN:1, MFL:3, VS:3,
+  UCP:3, FJP:1, HCP:3, HAD:1, HCI:1, GHI:2,
+};
+function getTier(r, code) { return ASSIGNED_TIERS[code] || 2; }
 function tierColor(t) { return t === 1 ? C.tier1 : t === 2 ? C.tier2 : C.tier3; }
 function tierBg(t) { return t === 1 ? C.tier1Bg : t === 2 ? C.tier2Bg : C.tier3Bg; }
 function tierLabel(t) { return t === 1 ? "TIER 1" : t === 2 ? "TIER 2" : "TIER 3"; }
@@ -159,7 +163,7 @@ function MetricLabel({ metric }) {
 
 // ─── SEGMENT COLUMN ───
 function SegmentColumn({ seg, expanded, PRE_POST_METRICS }) {
-  const t = getTier(seg.roi);
+  const t = getTier(seg.roi, seg.code);
   const tc = tierColor(t);
   const partyColor = seg.party === "GOP" ? C.gop : C.dem;
   const prePostH = H.prePostPad + PRE_POST_METRICS.length * H.prePostRow;
