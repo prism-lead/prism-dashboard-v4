@@ -23,16 +23,16 @@ const BUBBLES = [
 
 //Persona cards
 const CARD_IMAGES = {
-  CEC: "/prism-demo/CECCard.png",
-  TC:  "/prism-demo/TCCard.png",
+  CEC: "/prism-demo/CECCard.PNG",
+  TC:  "/prism-demo/TCCard.PNG",
   WE:  "/prism-demo/WECard.png",
-  TSP: "/prism-demo/TSPCard.png",
+  TSP: "/prism-demo/TSPCard.PNG",
   HF:  "/prism-demo/HFCard.png",
   PP:  "/prism-demo/PPCard.png",
   PFF: "/prism-demo/PFFCard.png",
   HHN: "/prism-demo/HHNCard.png",
-  MFL: "/prism-demo/MFLCard.png",
-  VS: "/prism-demo/VSCard.png",
+  MFL: "/prism-demo/MFLCard.PNG",
+  VS: "/prism-demo/VSCard.PNG",
   UCP: "/prism-demo/UCPCard.png",
   FJP: "/prism-demo/FJPCard.png",
   HCP: "/prism-demo/HCPCard.png",
