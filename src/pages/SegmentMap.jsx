@@ -224,8 +224,9 @@ export default function BubbleMap() {
               isActive={active === b.code}
               isDim={active !== null && active !== b.code}
               onClick={(e) => {
-                e.stopPropagation();
-                if (active === b.code) {
+  e.stopPropagation();
+  e.nativeEvent.stopImmediatePropagation();
+  if (active === b.code) {
                   navigate('/profile?seg=' + b.code);
                 } else {
                   setActive(b.code);
