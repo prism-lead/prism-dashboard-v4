@@ -45,10 +45,12 @@ const C = {
 };
 
 const ASSIGNED_TIERS = {
-  TSP:3, CEC:1, TC:1, HF:1, PP:2, WE:1, PFF:2, HHN:1, MFL:3, VS:3,
-  UCP:3, FJP:1, HCP:3, HAD:1, HCI:1, GHI:2,
+  ESI: {TSP:3, CEC:1, TC:1, HF:1, PP:2, WE:1, PFF:2, HHN:1, MFL:3, VS:3,
+        UCP:3, FJP:1, HCP:3, HAD:1, HCI:1, GHI:2},
+  MA:  {TSP:3, CEC:1, TC:1, HF:3, PP:2, WE:2, PFF:3, HHN:2, MFL:3, VS:3,
+        UCP:1, FJP:1, HCP:1, HAD:3, HCI:1, GHI:1},
 };
-function getTier(r, code) { return ASSIGNED_TIERS[code] || 2; }
+function getTier(code, study) { return (ASSIGNED_TIERS[study] || ASSIGNED_TIERS.ESI)[code] || 2; }
 function tierColor(t) { return t === 1 ? C.tier1 : t === 2 ? C.tier2 : C.tier3; }
 function tierBg(t) { return t === 1 ? C.tier1Bg : t === 2 ? C.tier2Bg : C.tier3Bg; }
 function tierLabel(t) { return t === 1 ? "TIER 1" : t === 2 ? "TIER 2" : "TIER 3"; }
@@ -163,8 +165,8 @@ function MetricLabel({ metric }) {
 }
 
 // ─── SEGMENT COLUMN ───
-function SegmentColumn({ seg, expanded, PRE_POST_METRICS, onNav }) {
-  const t = getTier(seg.roi, seg.code);
+function SegmentColumn({ seg, expanded, PRE_POST_METRICS, onNav, study }) {
+  const t = getTier(seg.code, study);
   const tc = tierColor(t);
   const partyColor = seg.party === "GOP" ? C.gop : C.dem;
   const prePostH = H.prePostPad + PRE_POST_METRICS.length * H.prePostRow;
@@ -467,7 +469,7 @@ export default function AudienceROI() {
             <div style={{ display: "flex", borderRight: `2px solid ${C.border}` }}>
               {gopSegs.map(s => (
                 <div key={s.code} style={{ borderRight: `1px solid ${C.border}` }}>
-                  <SegmentColumn seg={s} expanded={expanded} PRE_POST_METRICS={PRE_POST_METRICS} onNav={() => navigate('/profile?seg=' + s.code)} />
+                  <SegmentColumn seg={s} expanded={expanded} PRE_POST_METRICS={PRE_POST_METRICS} onNav={() => navigate('/profile?seg=' + s.code)} study={study} />
                 </div>
               ))}
             </div>
@@ -475,7 +477,7 @@ export default function AudienceROI() {
             <div style={{ display: "flex" }}>
               {demSegs.map(s => (
                 <div key={s.code} style={{ borderRight: `1px solid ${C.border}` }}>
-                  <SegmentColumn seg={s} expanded={expanded} PRE_POST_METRICS={PRE_POST_METRICS} onNav={() => navigate('/profile?seg=' + s.code)} />
+                  <SegmentColumn seg={s} expanded={expanded} PRE_POST_METRICS={PRE_POST_METRICS} onNav={() => navigate('/profile?seg=' + s.code)} study={study} />
                 </div>
               ))}
             </div>
