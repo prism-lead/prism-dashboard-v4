@@ -235,34 +235,43 @@ export default function BubbleMap() {
           ))}
         </svg>
 
-      {active && CARD_IMAGES[active] && (
-        <div
-          onClick={() => navigate('/profile?seg=' + active)}
-          style={{
-            position: "absolute",
-            top: "50%",
-            right: 40,
-            transform: "translateY(-50%)",
-            cursor: "pointer",
-            zIndex: 200,
-            filter: "drop-shadow(0 8px 32px rgba(0,0,0,0.7))",
-            transition: "opacity 0.3s ease",
-          }}
-        >
+      {active && CARD_IMAGES[active] && (() => {
+        const isGOP = BUBBLES.find(b => b.code === active)?.party === "GOP";
+        return (
+          <div
+            onClick={() => navigate('/profile?seg=' + active)}
+            style={{
+              position: "absolute",
+              top: "50%",
+              [isGOP ? "left" : "right"]: 40,
+              transform: "translateY(-50%)",
+              cursor: "pointer",
+              zIndex: 200,
+              opacity: 0.85,
+              filter: "drop-shadow(0 8px 32px rgba(0,0,0,0.7))",
+              transition: "opacity 0.3s ease, left 0.3s ease, right 0.3s ease",
+             }}
+          >
           <img
-             src={CARD_IMAGES[active]}
-             alt={active}
-            style={{ width: 320, borderRadius: 16 }}
-          />
-          <div style={{
-            textAlign: "center", marginTop: 8,
-            fontSize: 10, color: "#64748b",
-            fontFamily: "'JetBrains Mono',monospace",
-          }}>
-            Click card to view full profile →
-          </div>
+            src={CARD_IMAGES[active]}
+            alt={active}
+            style={{
+              width: 320,
+              borderRadius: 16,
+              opacity: 0.88,
+          }}
+        />
+        <div style={{
+          textAlign: "center", marginTop: 8,
+          fontSize: 10, color: "#64748b",
+          fontFamily: "'JetBrains Mono',monospace",
+        }}>
+          Click card to view full profile →
       </div>
-    )}    
+    </div>
+  );
+})()}
+
       
         {/* Legend */}
         <div style={{
