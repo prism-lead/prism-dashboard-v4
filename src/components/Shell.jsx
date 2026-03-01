@@ -45,7 +45,7 @@ export default function Shell() {
                 borderRadius: 6,
                 fontSize: 11,
                 fontWeight: isActive ? 500 : 300,
-                fontFamily: Nunito,
+                fontFamily:"'Nunito',sans-serif",
                 color: isActive ? C.white : C.textMuted,
                 background: isActive ? `${C.steel}20` : "transparent",
                 textDecoration: "none",
