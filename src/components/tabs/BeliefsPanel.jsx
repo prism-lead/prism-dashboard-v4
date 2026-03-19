@@ -148,7 +148,7 @@ function BeliefsPanel({ segIdx }) {
                       style={{
                         fontSize: 11,
                         fontWeight: 700,
-                        color: "#0f1a2e",
+                        color: "#fff",
                         textShadow: "0 0 4px rgba(255,255,255,0.3)",
                       }}
                     >
@@ -218,7 +218,7 @@ function BeliefsPanel({ segIdx }) {
                 >
                   {pct >= 10 && (
                     <span
-                      style={{ fontSize: 8, fontWeight: 700, color: "#0f1a2e" }}
+                      style={{ fontSize: 8, fontWeight: 700, color: "#fff" }}
                     >
                       {pct.toFixed(0)}%
                     </span>
