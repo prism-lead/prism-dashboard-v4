@@ -1,0 +1,178 @@
+{
+  "metrics": [
+    {
+      "key": "pol",
+      "label": "ESI Tax Policy",
+      "question": "Under current law, health insurance provided by employers is excluded from income taxes. Should the tax break for employer-sponsored health insurance stay in place, or be changed so those benefits are taxed like income?",
+      "scale": "% saying tax break should stay in place"
+    },
+    {
+      "key": "att",
+      "label": "ESI Role",
+      "question": "How strongly you believe employer-sponsored insurance deserves to play a central role in the U.S. health care system (0–100 scale)",
+      "scale": "Mean score (0 = no legitimate role, 100 = essential role)"
+    }
+  ],
+  "bySeg": {
+    "TSP": {
+      "pol": [
+        67.3,
+        67.3
+      ],
+      "att": [
+        66.8,
+        66.6
+      ]
+    },
+    "CEC": {
+      "pol": [
+        76,
+        80
+      ],
+      "att": [
+        69.8,
+        71.4
+      ]
+    },
+    "TC": {
+      "pol": [
+        80.4,
+        87.1
+      ],
+      "att": [
+        71.7,
+        73.7
+      ]
+    },
+    "HF": {
+      "pol": [
+        48,
+        68
+      ],
+      "att": [
+        64,
+        66.3
+      ]
+    },
+    "PP": {
+      "pol": [
+        59.6,
+        65.9
+      ],
+      "att": [
+        64.9,
+        67.3
+      ]
+    },
+    "WE": {
+      "pol": [
+        73.3,
+        78
+      ],
+      "att": [
+        67.8,
+        69.3
+      ]
+    },
+    "PFF": {
+      "pol": [
+        70,
+        70
+      ],
+      "att": [
+        67.9,
+        70.3
+      ]
+    },
+    "HHN": {
+      "pol": [
+        56.6,
+        57.3
+      ],
+      "att": [
+        67.9,
+        68.5
+      ]
+    },
+    "MFL": {
+      "pol": [
+        76.4,
+        78.2
+      ],
+      "att": [
+        71.8,
+        69.4
+      ]
+    },
+    "VS": {
+      "pol": [
+        62.2,
+        60.4
+      ],
+      "att": [
+        64.1,
+        65.4
+      ]
+    },
+    "UCP": {
+      "pol": [
+        61.3,
+        60
+      ],
+      "att": [
+        48,
+        47.8
+      ]
+    },
+    "FJP": {
+      "pol": [
+        54.7,
+        60
+      ],
+      "att": [
+        63.7,
+        65.3
+      ]
+    },
+    "HCP": {
+      "pol": [
+        57.9,
+        60.8
+      ],
+      "att": [
+        61.1,
+        61.2
+      ]
+    },
+    "HAD": {
+      "pol": [
+        62.7,
+        65.3
+      ],
+      "att": [
+        65.8,
+        67.5
+      ]
+    },
+    "HCI": {
+      "pol": [
+        65,
+        75
+      ],
+      "att": [
+        68.5,
+        69.8
+      ]
+    },
+    "GHI": {
+      "pol": [
+        76,
+        80
+      ],
+      "att": [
+        61.7,
+        63
+      ]
+    }
+  }
+}

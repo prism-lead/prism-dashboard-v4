@@ -1,0 +1,178 @@
+{
+  "metrics": [
+    {
+      "key": "pol2",
+      "label": "Prioritize MA",
+      "question": "Congress should prioritize keeping Medicare Advantage strong and affordable, protecting the benefits seniors rely on",
+      "scale": "% Agree"
+    },
+    {
+      "key": "pol1",
+      "label": "Oppose MA Cuts",
+      "question": "Do you support or oppose reducing federal payments to Medicare Advantage plans in order to lower overall Medicare spending?",
+      "scale": "% Oppose"
+    }
+  ],
+  "bySeg": {
+    "TSP": {
+      "pol2": [
+        46.6,
+        52.1
+      ],
+      "pol1": [
+        32.9,
+        24.6
+      ]
+    },
+    "CEC": {
+      "pol2": [
+        71.1,
+        75.2
+      ],
+      "pol1": [
+        43,
+        59.5
+      ]
+    },
+    "TC": {
+      "pol2": [
+        49.3,
+        54.7
+      ],
+      "pol1": [
+        37.3,
+        44
+      ]
+    },
+    "HF": {
+      "pol2": [
+        40.9,
+        36.7
+      ],
+      "pol1": [
+        22.4,
+        24.5
+      ]
+    },
+    "PP": {
+      "pol2": [
+        52,
+        50
+      ],
+      "pol1": [
+        24,
+        24
+      ]
+    },
+    "WE": {
+      "pol2": [
+        44.4,
+        45.3
+      ],
+      "pol1": [
+        33.4,
+        33.3
+      ]
+    },
+    "PFF": {
+      "pol2": [
+        36.1,
+        42.6
+      ],
+      "pol1": [
+        21.3,
+        25.6
+      ]
+    },
+    "HHN": {
+      "pol2": [
+        44.9,
+        44.3
+      ],
+      "pol1": [
+        28.5,
+        25
+      ]
+    },
+    "MFL": {
+      "pol2": [
+        67.2,
+        64.5
+      ],
+      "pol1": [
+        42.1,
+        42.1
+      ]
+    },
+    "VS": {
+      "pol2": [
+        46.7,
+        49.3
+      ],
+      "pol1": [
+        21.4,
+        32
+      ]
+    },
+    "UCP": {
+      "pol2": [
+        77.3,
+        80
+      ],
+      "pol1": [
+        60,
+        62.6
+      ]
+    },
+    "FJP": {
+      "pol2": [
+        60.6,
+        63.4
+      ],
+      "pol1": [
+        34.2,
+        41.7
+      ]
+    },
+    "HCP": {
+      "pol2": [
+        73.6,
+        69.8
+      ],
+      "pol1": [
+        40.3,
+        45.1
+      ]
+    },
+    "HAD": {
+      "pol2": [
+        53.3,
+        57.3
+      ],
+      "pol1": [
+        37.3,
+        34.7
+      ]
+    },
+    "HCI": {
+      "pol2": [
+        47.9,
+        51.4
+      ],
+      "pol1": [
+        38.9,
+        43.8
+      ]
+    },
+    "GHI": {
+      "pol2": [
+        62.7,
+        64
+      ],
+      "pol1": [
+        46.6,
+        56
+      ]
+    }
+  }
+}

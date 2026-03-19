@@ -1,3 +1,5 @@
+// DEPRECATED — do not edit. Edit CSV files in src/data/studies/ instead.
+// Pages import from loader.js via getStudyData('esi' | 'ma').
 // ═══════════════════════════════════════════════════════════════
 // AUTO-GENERATED — Do not edit by hand.
 // Run: python convert_data.py MAESIDashboardData.xlsx

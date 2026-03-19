@@ -1,0 +1,25 @@
+// ═══════════════════════════════════════════════════════════════
+// PRISM — STATIC SEGMENT DEFINITIONS (name, abbreviation, party)
+// This file does NOT change across studies.
+// ═══════════════════════════════════════════════════════════════
+
+export const SEGMENT_DEFINITIONS = [
+  { id: 1, code: "TSP", name: "Trust the Science Pragmatists", party: "GOP", pop: 2 },
+  { id: 2, code: "CEC", name: "Consumer Empowerment Champions", party: "GOP", pop: 7 },
+  { id: 3, code: "TC", name: "Traditional Conservatives", party: "GOP", pop: 6 },
+  { id: 4, code: "HF", name: "Health Futurists", party: "GOP", pop: 2 },
+  { id: 5, code: "PP", name: "Price Populists", party: "GOP", pop: 3 },
+  { id: 6, code: "WE", name: "Wellness Evangelists", party: "GOP", pop: 9 },
+  { id: 7, code: "PFF", name: "Paleo Freedom Fighters", party: "GOP", pop: 4 },
+  { id: 8, code: "HHN", name: "Holistic Health Naturalists", party: "GOP", pop: 3 },
+  { id: 9, code: "MFL", name: "Medical Freedom Libertarians", party: "GOP", pop: 5 },
+  { id: 10, code: "VS", name: "Vaccine Skeptics", party: "GOP", pop: 5 },
+  { id: 11, code: "UCP", name: "Universal Care Progressives", party: "DEM", pop: 11 },
+  { id: 12, code: "FJP", name: "Faith & Justice Progressives", party: "DEM", pop: 10 },
+  { id: 13, code: "HCP", name: "Health Care Protectionists", party: "DEM", pop: 8 },
+  { id: 14, code: "HAD", name: "Health Abundance Democrats", party: "DEM", pop: 10 },
+  { id: 15, code: "HCI", name: "Health Care Incrementalists", party: "DEM", pop: 8 },
+  { id: 16, code: "GHI", name: "Global Health Institutionalists", party: "DEM", pop: 6 },
+];
+
+export const SEGMENT_CODES = SEGMENT_DEFINITIONS.map((s) => s.code);
