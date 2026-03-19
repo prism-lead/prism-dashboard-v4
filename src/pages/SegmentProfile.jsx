@@ -1076,7 +1076,7 @@ export default function SegmentProfile() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "380px 1fr",
+              gridTemplateColumns: "420px 1fr",
               gap: 14,
               marginBottom: 20,
             }}
@@ -1155,22 +1155,22 @@ export default function SegmentProfile() {
                 <SchemaBlock
                   label="What They Believe"
                   text={seg.persona.believe}
-                  color="#60a5fa"
+                  color="#C0392B"
                 />
                 <SchemaBlock
                   label="What They Want"
                   text={seg.persona.want}
-                  color="#34d399"
+                  color="#5B8DEF"
                 />
                 <SchemaBlock
                   label="What They Do"
                   text={seg.persona.doWhat}
-                  color="#fbbf24"
+                  color="#1A7A3C"
                 />
                 <SchemaBlock
                   label="Who They Are"
                   text={seg.persona.whoAre}
-                  color="#a78bfa"
+                  color="#FF9100"
                 />
               </div>
             </div>

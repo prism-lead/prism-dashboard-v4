@@ -51,7 +51,7 @@ function TrustPanel({ segIdx }) {
           fontWeight: 700,
           textTransform: "uppercase",
           letterSpacing: 1.5,
-          color,
+          color:theme.text,
           marginBottom: 12,
           display: "flex",
           alignItems: "center",
@@ -77,14 +77,12 @@ function TrustPanel({ segIdx }) {
                 alignItems: "baseline",
               }}
             >
-              <span style={{ fontSize: 11, fontWeight: 600, color: C.text }}>
+              <span style={{ fontSize: 14, fontWeight: 600, color: C.text }}>
                 {e.l}
               </span>
               <span style={{ fontSize: 10 }}>
-                <span style={{ color: C.white, fontWeight: 700 }}>
-                  {sv.toFixed(1)}
-                </span>{" "}
-                <span style={{ fontSize: 9, color: d >= 0 ? C.green : C.red }}>
+              
+                <span style={{ fontSize: 12, color: d >= 0 ? C.green : C.red }}>
                   {d >= 0 ? "+" : ""}
                   {d.toFixed(2)}
                 </span>
@@ -382,12 +380,12 @@ function TrustPanel({ segIdx }) {
       <div style={{ display: "flex", gap: 12, marginBottom: 12 }}>
         <DotStrip2
           title="Corporate / Market"
-          color={theme.text}
+          color={theme.tier2Percent}
           ents={["PHARMA", "INSURER", "HOSPITAL", "PROVIDER"]}
         />
         <DotStrip2
           title="Government / Institutional"
-          color={theme.text}
+          color={theme.tabsBorderDarkActive}
           ents={["MEDICARE", "NIH", "FED", "ACADEMIA"]}
         />
       </div>

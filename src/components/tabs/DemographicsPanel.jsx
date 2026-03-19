@@ -77,7 +77,7 @@ function DemographicsPanel({ seg, tabId }) {
           <div
             style={{
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "space-evenly",
               gap: 32,
               marginBottom: 18,
               paddingBottom: 16,
@@ -120,12 +120,13 @@ function DemographicsPanel({ seg, tabId }) {
                 </div>
                 <div
                   style={{
-                    fontSize: 8,
-                    color: C.text3,
+                    fontSize: 9,
+                    color: theme.text3,
                     fontFamily: "'Nunito',sans-serif",
                     textTransform: "uppercase",
                     letterSpacing: 1,
                     marginTop: 5,
+                    fontWeight:700
                   }}
                 >
                   {s.label}

@@ -47,14 +47,14 @@ function ProfDonut({ value, avg, color, size = 96 }) {
         style={{ transition: "stroke-dasharray 0.4s ease" }}
       />
       {/* Avg marker */}
-      <circle
+      {/* <circle
         cx={tx}
         cy={ty}
         r={4}
         fill={C.bg}
         stroke={color}
         strokeWidth={1.5}
-      />
+      /> */}
       {/* Center percentage */}
       <text
         x={cx}

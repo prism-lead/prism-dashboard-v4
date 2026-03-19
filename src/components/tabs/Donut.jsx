@@ -61,9 +61,9 @@ function Donut({ value, label, subLabel, size = 88, strokeW = 9 }) {
       <div style={{ marginTop: 6, textAlign: "center" }}>
         <div
           style={{
-            fontSize: 9,
+            fontSize: 12,
             fontWeight: 700,
-            color: theme.genderChartActive,
+            color: C.text1,
             fontFamily: "'Nunito',sans-serif",
           }}
         >
@@ -71,7 +71,7 @@ function Donut({ value, label, subLabel, size = 88, strokeW = 9 }) {
         </div>
         <div
           style={{
-            fontSize: 7,
+            fontSize: 10,
             color: C.text3,
             fontFamily: "'Nunito',sans-serif",
             marginTop: 1,

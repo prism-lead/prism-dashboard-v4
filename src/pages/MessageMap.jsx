@@ -2,7 +2,7 @@
 import { useState, useMemo } from "react";
 import { getStudyData } from "../data/loader";
 import { useTheme } from "../context/ThemeContext";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { TbLayoutSidebarLeftCollapse } from "react-icons/tb";
 import { GoSidebarCollapse } from "react-icons/go";
 
@@ -123,6 +123,9 @@ export default function MessageMap() {
   // ─── Collapse state ───
   const [gopCollapsed, setGopCollapsed] = useState(false);
   const [demCollapsed, setDemCollapsed] = useState(false);
+  const [themeVisible, setThemeVisible] = useState(true);
+  const [gopCollapsing, setGopCollapsing] = useState(false); // in-progress
+  const [demCollapsing, setDemCollapsing] = useState(false);
 
   const getSop = themeId === "light" ? getSopCLight : getSopC;
   const studyData = getStudyData(study);
@@ -172,6 +175,24 @@ export default function MessageMap() {
     flexShrink: 0,
     marginLeft: 10,
   });
+
+  const ANIM_MS = 320;
+
+  const toggleGop = () => {
+    setGopCollapsing(true);
+    setTimeout(() => {
+      setGopCollapsed((c) => !c);
+      setGopCollapsing(false);
+    }, ANIM_MS);
+  };
+
+  const toggleDem = () => {
+    setDemCollapsing(true);
+    setTimeout(() => {
+      setDemCollapsed((c) => !c);
+      setDemCollapsing(false);
+    }, ANIM_MS);
+  };
 
   return (
     <div style={{ maxWidth: 1650, margin: "0 auto", color: t.text }}>
@@ -444,16 +465,19 @@ export default function MessageMap() {
                   fontSize: 10,
                   fontWeight: 700,
                   color: t.textDim,
-                  padding: 4,
+                  padding: !themeVisible ? 10 : 4,
                   verticalAlign: "bottom",
                   borderBottom: `2px solid ${t.border}`,
                   alignItems: "center",
                   gap: 10,
                   marginTop: "auto",
                   marginBottom: "0",
+                  cursor: "pointer",
                 }}
+                onClick={() => setThemeVisible((v) => !v)}
               >
-                THEME <FaEye />
+                {themeVisible && "THEME"}{" "}
+                {themeVisible ? <FaEye /> : <FaEyeSlash />}
               </th>
 
               {/* TOTAL col header */}
@@ -919,26 +943,36 @@ export default function MessageMap() {
                   </td>
 
                   {/* Theme badge */}
-                  <td
-                    style={{
-                      background: rowActive ? t.surface : t.surfaceInner,
-                      textAlign: "center",
-                      padding: 2,
-                    }}
-                  >
-                    <span
+                  {themeVisible ? (
+                    <td
                       style={{
-                        fontSize: 8,
-                        fontFamily: "'JetBrains Mono',monospace",
-                        padding: "1px 4px",
-                        borderRadius: 3,
-                        color: THEME_COLORS[msg.theme] || t.textMuted,
-                        fontWeight: 700,
+                        background: rowActive ? t.surface : t.surfaceInner,
+                        textAlign: "center",
+                        padding: 2,
                       }}
                     >
-                      {(msg.theme || "").toUpperCase()}
-                    </span>
-                  </td>
+                      <span
+                        style={{
+                          fontSize: 8,
+                          fontFamily: "'JetBrains Mono',monospace",
+                          padding: "1px 4px",
+                          borderRadius: 3,
+                          color: THEME_COLORS[msg.theme] || t.textMuted,
+                          fontWeight: 700,
+                        }}
+                      >
+                        {(msg.theme || "").toUpperCase()}
+                      </span>
+                    </td>
+                  ) : (
+                    <td
+                      style={{
+                        background: rowActive ? t.surface : t.surfaceInner,
+                        textAlign: "center",
+                        padding: 2,
+                      }}
+                    ></td>
+                  )}
 
                   {/* Total cell */}
                   {(() => {
@@ -954,6 +988,7 @@ export default function MessageMap() {
                           textAlign: "center",
                           // borderRadius: 2,
                           background: bg,
+                          border: "1px solid #fff",
                           fontFamily: "'JetBrains Mono',monospace",
                           fontWeight: 700,
                           fontSize: 12,
@@ -998,7 +1033,7 @@ export default function MessageMap() {
                               padding: "6px 4px",
                               minWidth: 36,
                               cursor: "pointer",
-                              borderLeft: `2px solid ${t.repRed}`,
+                              // borderLeft: `2px solid ${t.repRed}`,
                               title: "Click to expand",
                             }}
                           >
@@ -1035,15 +1070,21 @@ export default function MessageMap() {
                               fontWeight: 700,
                               fontSize: 12,
                               color: tx,
-                              padding: "6px 2px",
-                              minWidth: 68,
-                              opacity:
-                                sortCol !== null
+                              border: "1px solid #fff",
+                              padding: gopCollapsed ? "6px 0" : "6px 2px",
+                              maxWidth: gopCollapsed ? 0 : 68,
+                              minWidth: gopCollapsed ? 0 : 68,
+                              overflow: "hidden",
+                              whiteSpace: "nowrap",
+                              transition:
+                                "max-width 0.32s ease, min-width 0.32s ease, padding 0.32s ease, opacity 0.32s ease",
+                              opacity: gopCollapsed
+                                ? 0
+                                : sortCol !== null
                                   ? colOpacityWhenSorted(colIdx)
                                   : isSel || isHovC || rowActive
                                     ? 1
                                     : 0.85,
-                              transition: "all 0.2s ease",
                               boxShadow:
                                 isHovC && rowActive
                                   ? "inset 0 0 0 1px rgba(96,165,250,0.5)"
@@ -1105,19 +1146,25 @@ export default function MessageMap() {
                               textAlign: "center",
                               // borderRadius: 2,
                               background: bg,
+                              border: "1px solid #fff",
                               fontFamily: "'JetBrains Mono',monospace",
                               fontWeight: 700,
                               fontSize: 12,
                               color: tx,
-                              padding: "6px 2px",
-                              minWidth: 68,
-                              opacity:
-                                sortCol !== null
+                              padding: demCollapsed ? "6px 0" : "6px 2px",
+                              maxWidth: demCollapsed ? 0 : 68,
+                              minWidth: demCollapsed ? 0 : 68,
+                              overflow: "hidden",
+                              whiteSpace: "nowrap",
+                              transition:
+                                "max-width 0.32s ease, min-width 0.32s ease, padding 0.32s ease, opacity 0.32s ease",
+                              opacity: demCollapsed
+                                ? 0
+                                : sortCol !== null
                                   ? colOpacityWhenSorted(colIdx)
                                   : isSel || isHovC || rowActive
                                     ? 1
                                     : 0.85,
-                              transition: "all 0.2s ease",
                               boxShadow:
                                 isHovC && rowActive
                                   ? "inset 0 0 0 1px rgba(96,165,250,0.5)"
@@ -1146,6 +1193,7 @@ export default function MessageMap() {
                           fontFamily: "'JetBrains Mono',monospace",
                           fontWeight: 700,
                           fontSize: 12,
+                          border: "1px solid #fff",
                           color: tx,
                           padding: "6px 2px",
                           minWidth: 62,

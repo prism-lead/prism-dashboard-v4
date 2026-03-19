@@ -25,6 +25,7 @@ const SEGS = [
 const GROUPS = [
   {
     label: "MARKETS",
+    value: "≤3.0",
     color: "#5B8DEF",
     dims: [
       {
@@ -49,6 +50,7 @@ const GROUPS = [
   },
   {
     label: "MFA",
+    value: "3.0–3.5",
     color: "#9B6BD4",
     dims: [
       {
@@ -61,6 +63,7 @@ const GROUPS = [
   },
   {
     label: "PLANET",
+    value: "3.5–4.5",
     color: "#1A52B3",
     dims: [
       {
@@ -79,6 +82,7 @@ const GROUPS = [
   },
   {
     label: "MORALITY",
+    value: "4.5–5.5",
     color: "#C0392B",
     dims: [
       {
@@ -104,6 +108,7 @@ const GROUPS = [
   },
   {
     label: "POPULISM",
+    value: "≥5.5",
     color: "#F0A500",
     dims: [
       {
@@ -338,7 +343,7 @@ export default function IdeologyHeatmap() {
         </div>
 
         {/* Legend */}
-        <div
+        {/* <div
           style={{
             display: "flex",
             alignItems: "center",
@@ -363,6 +368,43 @@ export default function IdeologyHeatmap() {
               />
             </>
           ))}
+        </div> */}
+
+        {/* Gradient Bar */}
+        <div style={{ width: "100%", userSelect: "none" }}>
+          <div
+            style={{
+              width: "100%",
+              height: 14,
+              borderRadius: 99,
+              background:
+                "linear-gradient(to right, #2563eb, #93c5fd, #ffffff, #fca5a5, #dc2626)",
+            }}
+          />
+
+          {/* Tick Labels */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginTop: 4,
+              paddingX: "2px",
+            }}
+          >
+            {[2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0].map((v) => (
+              <span
+                key={v}
+                style={{
+                  fontSize: 8,
+                  color: t.textMuted,
+                  fontFamily: "'JetBrains Mono', monospace",
+                  textAlign: "center",
+                }}
+              >
+                {v.toFixed(1)}
+              </span>
+            ))}
+          </div>
         </div>
 
         <div
@@ -444,7 +486,7 @@ export default function IdeologyHeatmap() {
                     margin: 0,
                   }}
                 >
-                  {g.label}
+                  {g.value}
                 </span>
               </div>
             </div>
@@ -767,7 +809,7 @@ export default function IdeologyHeatmap() {
                                   fontSize: 6,
                                   fontWeight: 600,
                                   marginTop: 2,
-                                  color:textColor
+                                  color: textColor,
                                 }}
                               >
                                 {dev > 0 ? "+" : ""}

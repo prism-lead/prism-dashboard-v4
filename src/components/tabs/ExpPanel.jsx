@@ -60,14 +60,14 @@ function ExpPanel({ segIdx }) {
           strokeDasharray={`${filled} ${gap}`}
         />
         {/* Avg marker */}
-        <circle
+        {/* <circle
           cx={tx}
           cy={ty}
           r={4}
           fill={theme.coverageLineSecond}
           stroke={"#fff"}
           strokeWidth={1.5}
-        />
+        /> */}
         {/* Center text */}
         <text
           x={cx}
