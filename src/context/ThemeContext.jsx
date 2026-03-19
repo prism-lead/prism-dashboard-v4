@@ -11,13 +11,24 @@ const ThemeContext = createContext({
 });
 
 export function ThemeProvider({ children }) {
-  const [themeId, setThemeId] = useState("dark");
+  const [themeId, setThemeId] = useState(
+    () => localStorage.getItem("themeId") ?? "dark"  // ← read from storage on init
+  );
+
   const theme = THEMES[themeId] ?? darkTheme;
   const isDark = themeId === "dark";
+
+  // Wrap setThemeId to also save to localStorage
+  const handleSetThemeId = (id) => {
+    localStorage.setItem("themeId", id);  // ← save on change
+    setThemeId(id);
+  };
+
   const value = useMemo(
-    () => ({ theme, themeId, setThemeId, isDark }),
+    () => ({ theme, themeId, setThemeId: handleSetThemeId, isDark }),
     [theme, themeId, isDark]
   );
+
   return (
     <ThemeContext.Provider value={value}>
       {children}

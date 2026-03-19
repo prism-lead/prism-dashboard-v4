@@ -403,7 +403,7 @@ function SegmentColumn({
             width: 32,
             height: 32,
             borderRadius: "50%",
-            border: `2px solid ${partyColor}`,
+            // border: `2px solid ${partyColor}`,
             background: partyBackground,
             display: "flex",
             alignItems: "center",
@@ -792,7 +792,7 @@ export default function AudienceROI() {
           <div
             style={{
               display: "flex",
-              alignItems:'center',
+              alignItems: "center",
               gap: 8,
             }}
           >
@@ -806,11 +806,11 @@ export default function AudienceROI() {
 
               const activeBg =
                 s.k === "tier1"
-                  ? TIER_COLORS.tier1
+                  ? t.tier1
                   : s.k === "tier2"
-                    ? TIER_COLORS.tier2
+                    ? t.tier2
                     : s.k === "tier3"
-                      ? "#ef4444" // 🔴 red for tier3 (as you asked)
+                      ? t.tier3
                       : "#1A52B3";
 
               return (
@@ -840,7 +840,7 @@ export default function AudienceROI() {
             })}
 
             <BsFilterCircle
-              style={{ cursor: "pointer" ,color:'#9AA0AD' }}
+              style={{ cursor: "pointer", color: sortDesc ? "#1A52B3" : "#9AA0AD" }}
               onClick={() => setSortDesc((prev) => !prev)}
             />
           </div>
@@ -1071,7 +1071,7 @@ export default function AudienceROI() {
                   background: t.persuasionPara,
                   borderRadius: 4,
                   padding: "6px 8px",
-                  borderLeft: `2px solid ${TIER_COLORS.coalition}`,
+                  // borderLeft: `2px solid ${TIER_COLORS.coalition}`,
                 }}
               >
                 How many supporters can we predict will join our coalition?
@@ -1110,7 +1110,7 @@ export default function AudienceROI() {
                   background: t.persuasionPara,
                   borderRadius: 4,
                   padding: "6px 8px",
-                  borderLeft: `2px solid ${TIER_COLORS.activation}`,
+                  // borderLeft: `2px solid ${TIER_COLORS.activation}`,
                 }}
               >
                 What is the probability of responding to a CTA and being
@@ -1149,7 +1149,7 @@ export default function AudienceROI() {
                   background: t.persuasionPara,
                   borderRadius: 4,
                   padding: "6px 8px",
-                  borderLeft: `2px solid ${TIER_COLORS.influence}`,
+                  // borderLeft: `2px solid ${TIER_COLORS.influence}`,
                 }}
               >
                 How likely is this audience to affect outcomes or influence
@@ -1162,45 +1162,59 @@ export default function AudienceROI() {
           <div style={{ width: "100%" }}>
             {/* GOP */}
             <div style={{ display: "flex" }}>
-              {gopSegs.map((s) => (
-                <div
-                  key={s.code}
-                  style={{
-                    borderRight: `1px solid ${t.border}`,
-                    flex: 1,
-                    minWidth: 0,
-                  }}
-                >
-                  <SegmentColumn
-                    seg={s}
-                    expanded={expanded}
-                    PRE_POST_METRICS={PRE_POST_METRICS}
-                    onNav={() => navigate("/profile?seg=" + s.code)}
-                    study={study}
-                    theme={t}
-                  />
-                </div>
-              ))}
-              {/* DEM */}
-              {demSegs.map((s) => (
-                <div
-                  key={s.code}
-                  style={{
-                    borderRight: `1px solid ${t.border}`,
-                    flex: 1,
-                    minWidth: 0,
-                  }}
-                >
-                  <SegmentColumn
-                    seg={s}
-                    expanded={expanded}
-                    PRE_POST_METRICS={PRE_POST_METRICS}
-                    onNav={() => navigate("/profile?seg=" + s.code)}
-                    study={study}
-                    theme={t}
-                  />
-                </div>
-              ))}
+              <div
+                style={{
+                  display: "flex",
+                  width: "100%",
+                  borderRight: `1px solid ${t.border}`,
+                }}
+              >
+                {gopSegs.map((s) => (
+                  <div
+                    key={s.code}
+                    style={{
+                      flex: 1,
+                      minWidth: 0,
+                    }}
+                  >
+                    <SegmentColumn
+                      seg={s}
+                      expanded={expanded}
+                      PRE_POST_METRICS={PRE_POST_METRICS}
+                      onNav={() => navigate("/profile?seg=" + s.code)}
+                      study={study}
+                      theme={t}
+                    />
+                  </div>
+                ))}
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  width: "100%",
+                  borderLeft: `1px solid ${t.border}`,
+                }}
+              >
+                {/* DEM */}
+                {demSegs.map((s) => (
+                  <div
+                    key={s.code}
+                    style={{
+                      flex: 1,
+                      minWidth: 0,
+                    }}
+                  >
+                    <SegmentColumn
+                      seg={s}
+                      expanded={expanded}
+                      PRE_POST_METRICS={PRE_POST_METRICS}
+                      onNav={() => navigate("/profile?seg=" + s.code)}
+                      study={study}
+                      theme={t}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -223,14 +223,14 @@ function WellnessPanel({ segIdx }) {
                   strokeLinecap="round"
                   strokeDasharray={`${filled} ${gap}`}
                 />
-                <circle
+                {/* <circle
                   cx={tx}
                   cy={ty}
                   r={4}
                   fill="none"
                   stroke={C.steel}
                   strokeWidth={1.5}
-                />
+                /> */}
                 <text
                   x={cx}
                   y={cy - 4}
